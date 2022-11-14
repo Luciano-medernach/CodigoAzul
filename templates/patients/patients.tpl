@@ -1,10 +1,14 @@
 {include "../header.tpl"}
 
 <body>
+    {if $admin}
+        <a href="">Agregar paciente</a>
+    {/if}
+
     {if $patients}
         {foreach from=$patients item=patient }
             <div>
-                <p>{$patient->firstname} {$patient->lastname}</p>
+                <p>{$patient->name} {$patient->lastname}</p>
                 <form action="patient" method="GET">
                     <input type="hidden" name="id" value="{$patient->id}">
                     <button>Ver</button>
