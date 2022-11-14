@@ -2,6 +2,7 @@
 
 include_once('views/UsersView.php');
 include_once('models/UsersModel.php');
+include_once('helpers/auth.helper.php');
 
 class UsersController{
 
@@ -14,6 +15,11 @@ class UsersController{
     public function showList(){
         $users = $this->usersModel->getAll();
         $this->usersView->showList($users);
+    }
+
+    // Muestra el formulario de ingreso
+    public function showSignin(){
+        $this->usersView->showSignin();
     }
 
     // Muestra el formulario de adicion de usuario
@@ -30,6 +36,26 @@ class UsersController{
 
 
     // * DB FUNCTIONS
+
+    // Inicia sesion
+    public function signin(){
+        $username = $_POST["user"];
+        $password = $_POST["password"];
+        $password = md5($password);
+
+        $user = $this->usersModel->getByUsername($username);
+
+        if($user){
+            if($password == $user->password){
+                AuthHelper::login($user);
+                header("Location: " . $BASE_URL . "home");
+            } else {
+                $this->usersView->showSignin("Contraseña incorrecta.");
+            }
+        } else {
+            $this->usersView->showSignin("Nombre de usuario incorrecto.");
+        }
+    }
 
     // Agrega un usuario
     public function add(){
@@ -62,6 +88,13 @@ class UsersController{
 
         $this->usersModel->delete($id);
         header("Location: " . $BASE_URL . "home");
+    }
+
+    // Desloguea un usuario
+    public function logout(){
+        AuthHelper::logout();
+        header("Location: " . $BASE_URL . "home");
+
     }
 
 }

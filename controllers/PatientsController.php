@@ -3,25 +3,33 @@
 include_once('views/PatientsView.php');
 include_once('models/PatientsModel.php');
 
-class UsersController{
+class PatientsController{
 
     public function __construct(){
         $this->patientsView = new PatientsView();
         $this->patientsModel = new PatientsModel();
     }
 
-    // Muestra el listado de usuarios
+    // Muestra el listado de pacientes
     public function showList(){
         $patients = $this->patientsModel->getAll();
         $this->patientsView->showList($patients);
     }
 
-    // Muestra el formulario de adicion de usuario
+    // Muestra el paciente
+    public function show(){
+        $id = $_GET["id"];
+        $patient = $this->patientsModel->getById($id);
+        $this->patientsView->show($patient);
+    }
+
+
+    // Muestra el formulario de adicion de pacientes
     public function showAdd(){
         $this->patientsView->showAdd();
     }
 
-    // Muestra el formulario de adicion de usuario
+    // Muestra el formulario de edicion de pacientes
     public function showEdit(){
         $id = $_POST["id"];
         $user = $this->getById($id);
@@ -31,7 +39,7 @@ class UsersController{
 
     // * DB FUNCTIONS
 
-    // Agrega un usuario
+    // Agrega un paciente
     public function add(){
         $name = $_POST["name"];
         $lastname = $_POST["lastname"];
@@ -43,7 +51,7 @@ class UsersController{
         header("Location: " . $BASE_URL . "home");
     }
 
-    // Edita un usuario
+    // Edita un paciente
     public function edit(){
         $id = $_POST["id"];
         $name = $_POST["name"];
@@ -56,7 +64,7 @@ class UsersController{
         header("Location: " . $BASE_URL . "home");
     }
 
-    // Elimina un usuario
+    // Elimina un paciente
     public function delete(){
         $id = $_POST["id"];
 

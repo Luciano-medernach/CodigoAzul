@@ -15,7 +15,14 @@ class UsersModel extends Model {
     function getById($id){
         $query = $this-> getDb()->prepare('SELECT * FROM users WHERE id = ?');
         $query->execute([$id]);
-        return $query->fetchAll(PDO::FETCH_OBJ);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    // Retorna un usuario por su nombre de usuario
+    function getByUsername($username){
+        $query = $this-> getDb()->prepare('SELECT * FROM users WHERE username = ?');
+        $query->execute([$username]);
+        return $query->fetch(PDO::FETCH_OBJ);
     }
     
     // Agregar un usuario

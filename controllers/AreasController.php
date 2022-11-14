@@ -3,7 +3,7 @@
 include_once('views/AreasView.php');
 include_once('models/AreasModel.php');
 
-class CallsController{
+class AreasController{
 
     public function __construct(){
         $this->areasView = new AreasView();
@@ -36,7 +36,7 @@ class CallsController{
         $title = $_POST["title"];
 
         $this->areasModel->add($title);
-        header("Location: " . $BASE_URL . "home");
+        header("Location: " . $BASE_URL . "areas");
     }
 
     // Edita un area
@@ -53,7 +53,7 @@ class CallsController{
         $id = $_POST["id"];
 
         $this->areasModel->delete($id);
-        header("Location: " . $BASE_URL . "home");
+        header("Location: " . $BASE_URL . "areas");
     }
 
 }
