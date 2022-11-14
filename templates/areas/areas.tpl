@@ -18,7 +18,7 @@
                         <input type="hidden" name="id" value="{$area->id}">
                         <button>Editar</button>
                     </form>
-                    <form action="db-area-delete" onclick="return window.confirm('¿Seguro que desea eliminar el area?')" method="POST">
+                    <form action="db-area-delete" onsubmit="return window.confirm('¿Seguro que desea eliminar el area?')" method="POST">
                         <input type="hidden" name="id" value="{$area->id}">
                         <button>Eliminar</button>
                     </form>

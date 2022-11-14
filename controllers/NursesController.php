@@ -55,7 +55,7 @@ class NursesController{
         $id = $_POST["id"];
 
         $this->nursesModel->delete($id);
-        header("Location: " . $BASE_URL . "home");
+        header("Location: " . $BASE_URL . "nurses");
     }
 
 }

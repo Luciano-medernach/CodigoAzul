@@ -17,10 +17,21 @@
         <h2>Pacientes</h2>
         {if $patients}
             {foreach from=$patients item=patient}
-                <p>{$patient->firstname} {$patient->lastname}</p>
+                <p>{$patient->name} {$patient->lastname}</p>
             {/foreach}
         {else}
             <p>Aun no hay ningun paciente.</p>
+        {/if}
+    </div>
+
+    <div onclick="window.location='nurses';">
+        <h2>Personal medico</h2>
+        {if $nurses}
+            {foreach from=$nurses item=nurse}
+                <p>{$nurse->name} {$nurse->lastname}</p>
+            {/foreach}
+        {else}
+            <p>Aun no tenemos personal.</p>
         {/if}
     </div>
 

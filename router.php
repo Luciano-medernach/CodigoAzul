@@ -8,6 +8,7 @@
     require_once("controllers/PageController.php");
     require_once("controllers/PatientsController.php");
     require_once("controllers/AreasController.php");
+    require_once("controllers/NursesController.php");
 
 
     // Instancia los controladores
@@ -15,6 +16,7 @@
     $pageController = new PageController();
     $patientsController = new PatientsController();
     $areasController = new AreasController();
+    $nursesController = new NursesController();
 
 
 
@@ -41,6 +43,19 @@
             $patientsController->show();
             break;
 
+        case "patient-add":
+            $patientsController->showAdd();
+            break;
+
+        // * Nurses View
+        case "nurses":
+            $nursesController->showList();
+            break;
+
+        case "nurse-add":
+            $nursesController->showAdd();
+            break;
+
         // * Areas View
         case "areas":
             $areasController->showList();
@@ -53,6 +68,15 @@
         
 
         // * DB ACTIONS
+        // * Nurses Model
+        case "db-nurse-add":
+            $nursesController->add();
+            break;
+
+        case "db-nurse-delete":
+            $nursesController->delete();
+            break;
+            
         // * Areas Model
         case "db-area-add":
             $areasController->add();

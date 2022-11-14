@@ -11,6 +11,13 @@ class NursesModel extends Model {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    // Retorna los ultimos enfermeros
+    function getLast(){
+        $query = $this-> getDb()->prepare('SELECT * FROM nurses ORDER BY id DESC LIMIT 5');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
     // Retorna un enfermero por id
     function getById($id){
         $query = $this-> getDb()->prepare('SELECT * FROM nurses WHERE id = ?');
