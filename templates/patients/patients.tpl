@@ -2,7 +2,7 @@
 
 <body>
     {if $admin}
-        <a href="">Agregar paciente</a>
+        <a href="patient-add">Agregar paciente</a>
     {/if}
 
     {if $patients}
@@ -18,7 +18,7 @@
                         <input type="hidden" name="id" value="{$patient->id}">
                         <button>Editar</button>
                     </form>
-                    <form action="patient-delete" method="POST">
+                    <form action="db-patient-delete" method="POST" onsubmit="return window.confirm('¿Seguro que desea eliminar el paciente?')">
                         <input type="hidden" name="id" value="{$patient->id}">
                         <button>Eliminar</button>
                     </form>

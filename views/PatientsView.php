@@ -27,14 +27,18 @@
         }
 
         // Muestra el formulario de adicion de pacientes
-        function showAdd(){
-            $this->getSmarty()->display('templates/patients/patientsAdd.tpl');
+        function showAdd($areas, $nurses){
+            $this->getSmarty()->assign('areas', $areas);
+            $this->getSmarty()->assign('nurses', $nurses);
+            $this->getSmarty()->display('templates/patients/patient-add.tpl');
         }
 
         // Muestra el formulario de adicion de pacientes
-        function showEdit($patient){
+        function showEdit($patient, $areas, $nurses){
+            $this->getSmarty()->assign('areas', $areas);
+            $this->getSmarty()->assign('nurses', $nurses);
             $this->getSmarty()->assign('patient', $patient);
-            $this->getSmarty()->display('templates/patients/patientsEdit.tpl');
+            $this->getSmarty()->display('templates/patients/patient-edit.tpl');
         }
 
     }

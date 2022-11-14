@@ -26,15 +26,15 @@ class PatientsModel extends Model {
     }
 
     // Agregar un paciente
-    function add($name, $lastname, $age, $height, $weight, $location, $nurse){
-        $query = $this-> getDb()->prepare('INSERT INTO patients (name, lastname, age, height, weight, location, nurse) VALUES (?, ?, ?, ?, ?, ?, ?)');
-        $query->execute([$name, $lastname, $age, $height, $weight, $location, $nurse]);
+    function add($name, $lastname, $age, $height, $weight, $area, $nurse){
+        $query = $this-> getDb()->prepare('INSERT INTO patients (name, lastname, age, height, weight, area, nurse) VALUES (?, ?, ?, ?, ?, ?, ?)');
+        $query->execute([$name, $lastname, $age, $height, $weight, $area, $nurse]);
     }
 
     // Edita un paciente
-    function edit($id, $name, $lastname, $age, $height, $weight, $location, $nurse){
-        $query = $this-> getDb()->prepare('UPDATE patients SET name = ?, lastname = ?, age = ?, height = ?, weight = ?, location = ?, nurse = ? WHERE $id = ?');
-        $query->execute([$name, $lastname, $age, $height, $weight, $location, $nurse, $id]);
+    function edit($id, $name, $lastname, $age, $height, $weight, $area, $nurse){
+        $query = $this-> getDb()->prepare('UPDATE patients SET name = ?, lastname = ?, age = ?, height = ?, weight = ?, area = ?, nurse = ? WHERE id = ?');
+        $query->execute([$name, $lastname, $age, $height, $weight, $area, $nurse, $id]);
     }
 
     // Elimina un paciente

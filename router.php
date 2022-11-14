@@ -47,6 +47,10 @@
             $patientsController->showAdd();
             break;
 
+        case "patient-edit":
+            $patientsController->showEdit();
+            break;
+
         // * Nurses View
         case "nurses":
             $nursesController->showList();
@@ -68,6 +72,19 @@
         
 
         // * DB ACTIONS
+        // * Patients Model
+        case "db-patient-add":
+            $patientsController->add();
+            break;
+
+        case "db-patient-edit":
+            $patientsController->edit();
+            break;
+
+        case "db-patient-delete":
+            $patientsController->delete();
+            break;
+
         // * Nurses Model
         case "db-nurse-add":
             $nursesController->add();
