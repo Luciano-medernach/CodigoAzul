@@ -14,7 +14,7 @@ class Model {
         $host = 'localhost';
         $userName = 'root';
         $password = '';
-        $database = 'soed';
+        $database = 'codigoazul';
 
         try {
             $db = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $userName, $password);

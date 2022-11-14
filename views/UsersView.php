@@ -6,23 +6,35 @@
 
         public function __construct() {
             parent::__construct();
+            $id = AuthHelper::getLoggedUserId();
+            $username = AuthHelper::getLoggedUserName();
+            $admin = AuthHelper::adminStatus();
+            $this->getSmarty()->assign('id', $id);
+            $this->getSmarty()->assign('username', $username);
+            $this->getSmarty()->assign('admin', $admin);
         }
 
         // Muestra el listado de usuarios
         function showList($users){
             $this->getSmarty()->assign('users', $users);
-            $this->getSmarty()->display('templates/users.tpl');
+            $this->getSmarty()->display('templates/users/users.tpl');
+        }
+
+        // Muestra el formulario de ingreso
+        function showSignin($error = null){
+            $this->getSmarty()->assign('error', $error);
+            $this->getSmarty()->display('templates/users/signin.tpl');
         }
 
         // Muestra el formulario de adicion de usuarios
         function showAdd(){
-            $this->getSmarty()->display('templates/usersAdd.tpl');
+            $this->getSmarty()->display('templates/users/usersAdd.tpl');
         }
 
         // Muestra el formulario de adicion de usuarios
         function showEdit($user){
             $this->getSmarty()->assign('user', $user);
-            $this->getSmarty()->display('templates/usersEdit.tpl');
+            $this->getSmarty()->display('templates/users/usersEdit.tpl');
         }
 
     }

@@ -11,5 +11,12 @@ class CallsModel extends Model {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    // Retorna las llamadas por tipo
+    function getByType($type){
+        $query = $this-> getDb()->prepare('SELECT * FROM calls WHERE type = ? ORDER BY date DESC LIMIT 5;');
+        $query->execute([$type]);
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }
 ?>

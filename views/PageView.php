@@ -6,10 +6,19 @@
 
         public function __construct() {
             parent::__construct();
+            $id = AuthHelper::getLoggedUserId();
+            $username = AuthHelper::getLoggedUserName();
+            $admin = AuthHelper::adminStatus();
+            $this->getSmarty()->assign('id', $id);
+            $this->getSmarty()->assign('username', $username);
+            $this->getSmarty()->assign('admin', $admin);
         }
 
         // Muestra el inicio de la pagina
-        function showHome(){
+        function showHome($calls, $patients, $areas){
+            $this->getSmarty()->assign('calls', $calls);
+            $this->getSmarty()->assign('patients', $patients);
+            $this->getSmarty()->assign('areas', $areas);
             $this->getSmarty()->display('templates/home.tpl');
         }
 

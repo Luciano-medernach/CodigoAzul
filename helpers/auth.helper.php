@@ -11,9 +11,8 @@
         static public function login($user) {
             self::start();
             $_SESSION['id'] = $user->id;
-            $_SESSION['username'] = $user->firstname;
+            $_SESSION['username'] = $user->name;
             $_SESSION['admin'] = $user->admin;
-            $_SESSION['organizer'] = strtolower($user->rol);
         }
     
         // Destruye la sesion
@@ -55,16 +54,6 @@
             self::start();
             if (isset($_SESSION['admin'])) {
                 return ($_SESSION['admin']);
-            } else {
-                return false;
-            }
-        }
-
-        // Verifica si es organizador o jugador
-        public static function organizerStatus(){
-            self::start();
-            if(isset($_SESSION['organizer']) && $_SESSION['organizer'] == "organizer" ){
-                return ($_SESSION['organizer']);
             } else {
                 return false;
             }

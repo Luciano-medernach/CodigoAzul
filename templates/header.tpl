@@ -10,6 +10,7 @@
     <img src="./images/logo.png" alt="Logo Codigo Azul">
     {if $id}
         <p>Bienvenido {$username}!</p>
+        <a href="logout">Cerrar sesion</a>
     {else}
         <a href="signin">Iniciar Sesion</a>
     {/if}

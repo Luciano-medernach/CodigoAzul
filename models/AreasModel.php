@@ -6,7 +6,14 @@ class AreasModel extends Model {
 
     // Retorna todas las areas
     function getAll(){
-        $query = $this-> getDb()->prepare('SELECT * FROM areas ORDER BY title ASC');
+        $query = $this-> getDb()->prepare('SELECT * FROM areas ORDER BY name ASC');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // Retorna las ultimas cinco
+    function getLast(){
+        $query = $this-> getDb()->prepare('SELECT * FROM areas ORDER BY id DESC LIMIT 5');
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
@@ -20,13 +27,13 @@ class AreasModel extends Model {
 
     // Agregar un area
     function add($title){
-        $query = $this-> getDb()->prepare('INSERT INTO areas (title) VALUES (?)');
+        $query = $this-> getDb()->prepare('INSERT INTO areas (name) VALUES (?)');
         $query->execute([$title]);
     }
 
     // Edita un area
     function edit($id, $title){
-        $query = $this-> getDb()->prepare('UPDATE areas SET title = ? WHERE $id = ?');
+        $query = $this-> getDb()->prepare('UPDATE areas SET name = ? WHERE $id = ?');
         $query->execute([$title, $id]);
     }
 

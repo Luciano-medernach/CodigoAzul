@@ -6,11 +6,15 @@
     // Requiere los controladores
     require_once("controllers/UsersController.php");
     require_once("controllers/PageController.php");
+    require_once("controllers/PatientsController.php");
+    require_once("controllers/AreasController.php");
 
 
     // Instancia los controladores
     $usersController = new UsersController();
     $pageController = new PageController();
+    $patientsController = new PatientsController();
+    $areasController = new AreasController();
 
 
 
@@ -22,10 +26,51 @@
     $urlParts = explode('/',$_GET['action']);
 
     switch($urlParts[0]){
-        // Show interactions
+        // * VIEW ACTIONS
         // * Page View
         case "home":
             $pageController->showHome(); 
+            break;
+
+        // * Patients View
+        case "patients":
+            $patientsController->showList();
+            break;
+
+        case "patient":
+            $patientsController->show();
+            break;
+
+        // * Areas View
+        case "areas":
+            $areasController->showList();
+            break;
+
+        // * Users View
+        case "signin":
+            $usersController->showSignin();
+            break;
+        
+
+        // * DB ACTIONS
+        // * Areas Model
+        case "db-area-add":
+            $areasController->add();
+            break;
+
+        case "db-area-delete":
+            $areasController->delete();
+            break;
+
+        // * Users Model
+        case "db-signin":
+            $usersController->signin();
+            break;
+
+
+
+        case "logout":
+            $usersController->logout();
             break;
 
         default:
