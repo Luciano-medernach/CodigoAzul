@@ -2,6 +2,7 @@
 module.exports = {
   content: ["./templates/*.tpl",
   "./js/*.js",
+  "./templates/**/*.tpl",
 ],
   theme: {
     fontFamily: {
