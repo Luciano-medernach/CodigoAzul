@@ -1,13 +1,11 @@
 {include "../header.tpl"}
 
 <body class="bg-gradient-to-b from-cwhite to-clightblue h-screen text-cdarkblue">
-    {if $admin}
-        <a class=" block mx-auto p-2 w-1/3 text-3xl text-cwhite  bg-cpink btn-white " href="patient-add">Agregar paciente</a>
-    {/if}
+
     {if $patients}
-        <div class="mt-12 grid gap-6 grid-cols-2 grid-rows-3 justify-items-center mx-auto   mx-20">
+        <div class="grid gap-6 grid-cols-3  justify-items-center mx-auto mx-20 mt-12">
         {foreach from=$patients item=patient }
-            <div class=" flex flex-col box-with-shadow w-2/3  ">
+            <div class=" flex flex-col box-with-shadow w-full  ">
                     
                 <form class="card-paciente " action="patient" method="GET">
                     <img class=" w-28  mx-auto" src="./images/paciente2.png" alt="Logo Codigo Azul">
@@ -32,9 +30,19 @@
                 {/if}
             </div>
         {/foreach}
+        {if $admin}
+            <div class="flex justify-center items-center w-full ">
+                <a class=" mx-4 w-full py-4 text-2xl text-cwhite bg-cpink btn-white " href="patient-add">Agregar paciente</a>
+            </div>
+        {/if}
         </div>
     {else}
         <h3>Aun no tenemos pacientes registrados.</h3>
-
+        {if $admin}
+            <div class="flex justify-center items-center w-full ">
+                <a class=" mx-4 w-full py-4 text-2xl text-cwhite bg-cpink btn-white " href="patient-add">Agregar paciente</a>
+            </div>
+        {/if}
+        </div>
     {/if}
 </body>
