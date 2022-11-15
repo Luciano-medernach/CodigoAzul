@@ -17,7 +17,7 @@ module.exports = {
           cdarkblue: "#0b2040",
           cwhite:"#F0F5F9",
           cpink:"#FFB9D2",
-          clightgreen:"#46C296",
+          clightgreen:"#79bda5",
           cgray:"#ABABAB",
           cdarkgray: "#5c5c5c",
           clightblue:"#DAECFB",
