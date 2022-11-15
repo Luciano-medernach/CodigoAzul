@@ -11,6 +11,13 @@ class UsersModel extends Model {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    // Retorna los ultimos usuarios
+    function getLast(){
+        $query = $this-> getDb()->prepare('SELECT * FROM users ORDER BY id DESC LIMIT 5');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
     // Retorna un usuario por id
     function getById($id){
         $query = $this-> getDb()->prepare('SELECT * FROM users WHERE id = ?');
@@ -41,6 +48,13 @@ class UsersModel extends Model {
     function delete($id){
         $query = $this-> getDb()->prepare('DELETE FROM users WHERE id = ?');
         $query->execute([$id]);
+    }
+
+    // Verifica que el nombre de usuario no exista
+    function checkUsernam($username){
+        $query = $this-> getDb()->prepare('SELECT * FROM users WHERE username = ?');
+        $query->execute([$username]);
+        return $query->rowCount();
     }
 
 }

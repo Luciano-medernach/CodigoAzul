@@ -29,7 +29,7 @@ class UsersController{
 
     // Muestra el formulario de adicion de usuario
     public function showEdit(){
-        $id = $_POST[$id];
+        $id = $_GET["id"];
         $user = $this->usersModel->getById($id);
         $this->usersView->showEdit($user);
     }
@@ -63,23 +63,33 @@ class UsersController{
         $lastname = $_POST["lastname"];
         $username = $_POST["username"];
         $password = $_POST["password"];
-        $admin = $_POST["admin"];
+        $admin = isset($_POST["admin"]) ? 1 : 0;
 
         $this->usersModel->add($name, $lastname, $username, $password, $admin);
-        header("Location: " . $BASE_URL . "home");
+        header("Location: " . $BASE_URL . "users");
     }
 
     // Edita un usuario
     public function edit(){
         $id = $_POST["id"];
+
+        $user = $this->usersModel->getById($id);
+
         $name = $_POST["name"];
         $lastname = $_POST["lastname"];
         $username = $_POST["username"];
         $password = $_POST["password"];
-        $admin = $_POST["admin"];
+        
+        if($password != $user->password){
+            $password = md5($password);
+        }
+
+        $admin = isset($_POST["admin"]) ? 1 : 0;
+
+        var_dump($admin);
 
         $this->usersModel->edit($id, $name, $lastname, $username, $password, $admin);
-        header("Location: " . $BASE_URL . "home");
+        header("Location: " . $BASE_URL . "users");
     }
 
     // Elimina un usuario
@@ -87,7 +97,7 @@ class UsersController{
         $id = $_POST["id"];
 
         $this->usersModel->delete($id);
-        header("Location: " . $BASE_URL . "home");
+        header("Location: " . $BASE_URL . "users");
     }
 
     // Desloguea un usuario

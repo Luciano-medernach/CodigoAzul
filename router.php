@@ -73,7 +73,18 @@
         case "signin":
             $usersController->showSignin();
             break;
-        
+
+        case "users":
+            $usersController->showList();
+            break;
+
+        case "user-add":
+            $usersController->showAdd();
+            break;
+
+        case "user-edit":
+            $usersController->showEdit();
+            break;
 
         // * DB ACTIONS
         // * Patients Model
@@ -120,6 +131,17 @@
             $usersController->signin();
             break;
 
+        case "db-user-add":
+            $usersController->add();
+            break;
+
+        case "db-user-edit":
+            $usersController->edit();
+            break;
+
+        case "db-user-delete":
+            $usersController->delete();
+            break;
 
 
         case "logout":
