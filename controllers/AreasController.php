@@ -28,7 +28,8 @@ class AreasController{
         $assignedPatients = $this->patientsModel->getAssignedToArea($id);
         $nurses = $this->nursesModel->getAll($id);
         $assignedNurses = $this->nursesModel->getAssignedToArea($id);
-        $this->areasView->show($area, $patients, $assignedPatients, $nurses, $assignedNurses);
+        $assignedOrigins = $this->areasModel->getOriginsAssigned($id);
+        $this->areasView->show($area, $patients, $assignedPatients, $nurses, $assignedNurses, $assignedOrigins);
     }
 
 
@@ -119,6 +120,35 @@ class AreasController{
         $areaid = $_POST["areaid"];
 
         $this->nursesModel->deassignToArea($nurseid, $areaid);
+        echo '<script language="javascript">';
+        echo 'history.back()';
+        echo '</script>'; 
+    }
+
+    // Asigna un origen de llamada al area
+    public function assignOrigin(){
+        $origin = $_POST["origin"];
+        $areaid = $_POST["areaid"];
+
+        if($this->areasModel->checkAssignedOrigin($origin, $areaid) > 0){
+            echo '<script language="javascript">';
+            echo 'alert("Ya se encuentra asignado.");';
+            echo 'history.back();';
+            echo '</script>'; 
+        } else {
+            $this->areasModel->assignToArea($origin, $areaid);
+            echo '<script language="javascript">';
+            echo 'history.back()';
+            echo '</script>'; 
+        };
+    }
+
+    // Desasigna un origen de llamada del area
+    public function deassignOrigin(){
+        $origin = $_POST["origin"];
+        $areaid = $_POST["areaid"];
+
+        $this->areasModel->deassignToArea($origin, $areaid);
         echo '<script language="javascript">';
         echo 'history.back()';
         echo '</script>'; 

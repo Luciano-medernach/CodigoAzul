@@ -18,5 +18,11 @@ class CallsModel extends Model {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    // Retorna la cantidad de llamadas por dia
+    function getCountByDate(){
+        $query = $this-> getDb()->prepare("SELECT COUNT(id) as count, date FROM calls GROUP BY date");
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
 }
 ?>

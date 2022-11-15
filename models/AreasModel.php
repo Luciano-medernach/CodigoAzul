@@ -50,5 +50,32 @@ class AreasModel extends Model {
         $query->execute([$id]);
     }
 
+
+    // Asigna un origen a un area
+    function assignToArea($origin, $areaid){
+        $query = $this-> getDb()->prepare('INSERT area_origin (origin, areaid) VALUES (?, ?)');
+        $query->execute([$origin, $areaid]);
+    }
+
+    // Obtiene los origenes asignadas a un area determinada
+    function getOriginsAssigned($id){
+        $query = $this-> getDb()->prepare('SELECT * FROM area_origin WHERE areaid = ?');
+        $query->execute([$id]);
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // Verifica que el origen no este ya asignado
+    function checkAssignedOrigin($origin, $areaid){
+        $query = $this-> getDb()->prepare('SELECT * FROM area_origin WHERE origin = ? AND areaid = ?');
+        $query->execute([$origin, $areaid]);
+        return $query->rowCount();
+    }
+
+    // Desasigna un origen de un area
+    function deassignToArea($origin, $areaid){
+        $query = $this-> getDb()->prepare('DELETE FROM area_origin WHERE origin = ? AND areaid = ?');
+        $query->execute([$origin, $areaid]);
+    }
+
 }
 ?>

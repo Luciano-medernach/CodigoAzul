@@ -57,7 +57,7 @@
             {/if}
         </div>
 
-        <div onclick="window.location='areas';" class="box-with-shadow w-full h-full">
+        <div onclick="window.location='reports';" class="box-with-shadow w-full h-full">
             <img class=" w-32 mx-auto" src="./images/estadistica-inferencial.png" alt="Logo Codigo Azul">
             <h2>Reportes</h2> 
             {if $areas}
