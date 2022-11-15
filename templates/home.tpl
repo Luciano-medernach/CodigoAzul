@@ -1,9 +1,6 @@
 {include "header.tpl"}
 
-<body class=" bg-gradient-to-b from-cwhite to-clightblue">
-    <div class="grid gap-6 grid-cols-3  mt-20 max-w-3xl mx-auto">
 
-        <div onclick="window.location='calls';" class="col-start-1 col-end-3 text-cdarkblue bg-cpink/25 box-with-shadow w-full h-full ">
             <img class=" w-20 mx-auto" src="./images/latido-del-corazon.png" alt="Logo Codigo Azul">
             <h2>Llamadas</h2>
             {if $calls}
@@ -69,19 +66,7 @@
             {/if}
         </div>
         
-        
     </div>
 
-    {if $admin}
-        <div onclick="window.location='users';">
-            <h2>Usuarios</h2>
-            {if $users}
-                {foreach from=$users item=user}
-                    <p>{$user->name} {$user->lastname}</p>
-                {/foreach}
-            {else}
-                <p>Aun no hay ningun usuario.</p>
-            {/if}
-        </div>
-    {/if}
+    
 </body>

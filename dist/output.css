@@ -419,10 +419,6 @@ video {
   display: none;
 }
 
-:root {
-  --color-darkblue: #0b2040;
-}
-
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -548,10 +544,6 @@ video {
   box-shadow: 4px 8px 8px 0px #0000001A, 2px 8px 8px 0px #0000001A inset;
 }
 
-.left-1\/2 {
-  left: 50%;
-}
-
 .col-start-1 {
   grid-column-start: 1;
 }
@@ -569,32 +561,20 @@ video {
   margin-top: 2rem;
 }
 
-.mt-20 {
-  margin-top: 5rem;
-}
-
-.ml-40 {
-  margin-left: 10rem;
-}
-
-.ml-80 {
-  margin-left: 20rem;
-}
-
-.ml-96 {
-  margin-left: 24rem;
-}
-
-.ml-20 {
-  margin-left: 5rem;
-}
-
 .ml-6 {
   margin-left: 1.5rem;
 }
 
-.block {
-  display: block;
+.mt-20 {
+  margin-top: 5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .flex {
@@ -605,8 +585,16 @@ video {
   display: grid;
 }
 
+.hidden {
+  display: none;
+}
+
 .h-24 {
   height: 6rem;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .h-full {
@@ -657,6 +645,10 @@ video {
   gap: 1.5rem;
 }
 
+.gap-8 {
+  gap: 2rem;
+}
+
 .bg-cpink\/25 {
   background-color: rgb(255 185 210 / 0.25);
 }
@@ -664,6 +656,11 @@ video {
 .bg-clightblue {
   --tw-bg-opacity: 1;
   background-color: rgb(218 236 251 / var(--tw-bg-opacity));
+}
+
+.bg-cwhite {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 245 249 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-b {
@@ -692,12 +689,16 @@ video {
   padding-right: 3rem;
 }
 
-.pl-80 {
-  padding-left: 20rem;
+.pl-8 {
+  padding-left: 2rem;
 }
 
-.pl-40 {
-  padding-left: 10rem;
+.pr-8 {
+  padding-right: 2rem;
+}
+
+.pl-4 {
+  padding-left: 1rem;
 }
 
 .text-7xl {
@@ -720,16 +721,6 @@ video {
 
 .text-cdarkblue\/80 {
   color: rgb(11 32 64 / 0.8);
-}
-
-.blur-2xl {
-  --tw-blur: blur(40px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.blur-md {
-  --tw-blur: blur(12px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .blur-sm {

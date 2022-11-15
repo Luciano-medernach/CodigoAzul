@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="dist/output.css">
     <title> Codigo Azul </title>
 </head>
-<header class="flex justify-between items-center h-24 text-cdarkblue w-full mt-8">
+<header class="flex justify-between items-center h-24 text-cdarkblue w-full mt-4">
     {if $id}
-        <p class="font-bold pl-12">¡Bienvenido {$username}!</p>
+        <p class="p-2 pl-4 btn-blue bg-cwhite text-cdarkblue">¡Bienvenido {$username}!</p>
         <img class=" blur-sm w-80" src="./images/logo.png" alt="Logo Codigo Azul">
-        <a class="btn-blue p-2 pr-12" href="logout">Cerrar sesion</a>
+        <a class="btn-blue p-2 pr-8" href="logout">Cerrar sesion</a>
     {else}
         <img class=" ml-6 w-80" src="./images/logo.png" alt="Logo Codigo Azul">
         <a class="btn-blue p-2" href="signin">Iniciar Sesion</a>
