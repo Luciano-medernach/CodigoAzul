@@ -22,15 +22,15 @@
 
     {if $admin}
         <form action="db-patient-assign-nurse" method="POST">
-            <select name="nurse" required>
-            {foreach from=$nurses item=nurse}
-                <option value="{$nurse->id}">{$nurse->lastname} {$nurse->name}</option>
-            {/foreach}
-
-            <input type="hidden" name="id" value="{$patient->id}">
+            <select name="nurseid" required>
+                {foreach from=$nurses item=nurse}
+                    <option value="{$nurse->id}">{$nurse->lastname} {$nurse->name}</option>
+                {/foreach}
+            </select>
+            <input type="hidden" name="patientid" value="{$patient->id}">
 
             <button>Asignar nuevo enfermero</button>
-        </select>
+        
         </form>
     {/if}
 
@@ -41,7 +41,7 @@
                 <p>{$nurse->name} {$nurse->lastname}</p>
                 <form action="db-patient-deassign-nurse" method="POST">
                     <input type="hidden" name="patientid" value="{$patient->id}">
-                    <input type="hidden" name="nurseid" value="{$nurse->id}">
+                    <input type="hidden" name="nurseid" value="{$nurse->nurseid}">
                     <button>Desasignar enfermero</button>
                 </form>
             </div>

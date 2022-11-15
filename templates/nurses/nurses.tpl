@@ -7,10 +7,9 @@
     {if $nurses}
         {foreach from=$nurses item=nurse }
             <div>
-                <p>{$nurse->name} {$nurse->lastname}</p>
                 <form action="nurse" method="GET">
                     <input type="hidden" name="id" value="{$nurse->id}">
-                    <button>Ver</button>
+                    <button>{$nurse->name} {$nurse->lastname}</button>
                 </form>
                 {if $admin}
                     <form action="nurse-edit" method="GET">

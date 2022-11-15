@@ -9,10 +9,9 @@
         {foreach from=$patients item=patient }
         
             <div class="box-with-shadow w-60 mt-12">
-                <p>{$patient->name} {$patient->lastname}</p>
                 <form action="patient" method="GET">
                     <input type="hidden" name="id" value="{$patient->id}">
-                    <button>Ver</button>
+                    <button>{$patient->name} {$patient->lastname}</button>
                 </form>
                 {if $admin}
                     <form class="inline w-full" action="patient-edit" method="GET">

@@ -116,7 +116,7 @@ class PatientsController{
 
         if($this->nursesModel->checkAssignedPatient($nurseid, $patientid) > 0){
             echo '<script language="javascript">';
-            echo 'alert("Ese paciente ya esta asignado.");';
+            echo 'alert("Ya se encuentra asignado.");';
             echo 'history.back();';
             echo '</script>'; 
         } else {
