@@ -10,14 +10,12 @@
 
     {if $areas}
         {foreach from=$areas item=area }
-            <div>
-                <p>{$area->name}</p>
+            <div id="area-container">
+                <p id="area-{$area->id}">{$area->name}</p>
 
                 {if $admin}
-                    <form action="area-edit" method="GET">
-                        <input type="hidden" name="id" value="{$area->id}">
-                        <button>Editar</button>
-                    </form>
+                    <button id="button-{$area->id}" onclick="edit({$area->id})">Editar</button>
+
                     <form action="db-area-delete" onsubmit="return window.confirm('¿Seguro que desea eliminar el area?')" method="POST">
                         <input type="hidden" name="id" value="{$area->id}">
                         <button>Eliminar</button>
@@ -30,5 +28,5 @@
 
     {/if}
 
-
+    <script src="./js/area.js"></script>
 </body>

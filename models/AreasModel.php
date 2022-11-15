@@ -23,18 +23,25 @@ class AreasModel extends Model {
         $query = $this-> getDb()->prepare('SELECT * FROM areas WHERE id = ?');
         $query->execute([$id]);
         return $query->fetchAll(PDO::FETCH_OBJ);
-}
+    }
+
+    // Verifica si aun quedan pacientes en el area
+    function checkPatients($id){
+        $query = $this-> getDb()->prepare('SELECT * FROM patients WHERE area = ?');
+        $query->execute([$id]);
+        return $query->rowCount();
+    }
 
     // Agregar un area
-    function add($title){
+    function add($name){
         $query = $this-> getDb()->prepare('INSERT INTO areas (name) VALUES (?)');
-        $query->execute([$title]);
+        $query->execute([$name]);
     }
 
     // Edita un area
-    function edit($id, $title){
-        $query = $this-> getDb()->prepare('UPDATE areas SET name = ? WHERE $id = ?');
-        $query->execute([$title, $id]);
+    function edit($id, $name){
+        $query = $this-> getDb()->prepare('UPDATE areas SET name = ? WHERE id = ?');
+        $query->execute([$name, $id]);
     }
 
     // Elimina un area

@@ -16,44 +16,42 @@ class AreasController{
         $this->areasView->showList($areas);
     }
 
-    // Muestra el formulario de adicion de areas
-    public function showAdd(){
-        $this->areasView->showAdd();
-    }
-
-    // Muestra el formulario de adicion de areas
-    public function showEdit(){
-        $id = $_POST[$id];
-        $area = $this->areasModel->getById($id);
-        $this->areasView->showEdit($area);
-    }
-
 
     // * DB FUNCTIONS
 
     // Agrega un area
     public function add(){
-        $title = $_POST["title"];
+        $name = $_POST["name"];
 
-        $this->areasModel->add($title);
+        $this->areasModel->add($name);
         header("Location: " . $BASE_URL . "areas");
     }
 
     // Edita un area
     public function edit(){
         $id = $_POST["id"];
-        $title = $_POST["title"];
+        $name = $_POST["name"];
 
-        $this->areasModel->edit($id, $title);
-        header("Location: " . $BASE_URL . "home");
+        $this->areasModel->edit($id, $name);
+        header("Location: " . $BASE_URL . "areas");
     }
 
     // Elimina un area
     public function delete(){
         $id = $_POST["id"];
 
+        if($this->areasModel->checkPatients($id) > 0){
+            echo '<script language="javascript">';
+            echo 'alert("¡Todavia existen pacientes en esta area!");';
+            echo 'history.back()';
+            echo '</script>'; 
+        }
+
+
         $this->areasModel->delete($id);
-        header("Location: " . $BASE_URL . "areas");
+        
+
+
     }
 
 }

@@ -60,6 +60,10 @@
             $nursesController->showAdd();
             break;
 
+        case "nurse-edit":
+            $nursesController->showEdit();
+            break;
+
         // * Areas View
         case "areas":
             $areasController->showList();
@@ -90,6 +94,10 @@
             $nursesController->add();
             break;
 
+        case "db-nurse-edit":
+            $nursesController->edit();
+            break;
+
         case "db-nurse-delete":
             $nursesController->delete();
             break;
@@ -97,6 +105,10 @@
         // * Areas Model
         case "db-area-add":
             $areasController->add();
+            break;
+
+        case "db-area-edit":
+            $areasController->edit();
             break;
 
         case "db-area-delete":
