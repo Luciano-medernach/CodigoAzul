@@ -1,7 +1,7 @@
 {include "../header.tpl"}	
 
 <body>
-    <form action="db-patient-add" method="POST">
+    <form class="box-with-shadow w-60 mt-12" action="db-patient-add" method="POST">
         <input type="text" name="name" placeholder="Nombre" maxlength="50" required />
         <input type="text" name="lastname" placeholder="Apellido" maxlength="50" required />
         <input type="number" name="dni" placeholder="DNI" max="100000000" required />
