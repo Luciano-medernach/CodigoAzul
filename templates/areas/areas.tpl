@@ -12,6 +12,10 @@
         {foreach from=$areas item=area }
             <div id="area-container">
                 <p id="area-{$area->id}">{$area->name}</p>
+                <form action="area" method="GET">
+                    <input type="hidden" name="id" value="{$area->id}">
+                    <button>Ver</button>
+                </form>
 
                 {if $admin}
                     <button id="button-{$area->id}" onclick="edit({$area->id})">Editar</button>

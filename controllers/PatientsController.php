@@ -24,7 +24,9 @@ class PatientsController{
     public function show(){
         $id = $_GET["id"];
         $patient = $this->patientsModel->getById($id);
-        $this->patientsView->show($patient);
+        $nurses = $this->nursesModel->getAll();
+        $assignedNurses = $this->nursesModel->getAssignedToPatient($id);
+        $this->patientsView->show($patient, $nurses, $assignedNurses);
     }
 
 
@@ -51,13 +53,25 @@ class PatientsController{
     public function add(){
         $name = $_POST["name"];
         $lastname = $_POST["lastname"];
+        $dni = $_POST["dni"];
         $age = $_POST["age"];
+        $address = $_POST["address"];
+        $phone = $_POST["phone"];
+        $family_phone = $_POST["family_phone"];
         $height = $_POST["height"];
         $weight = $_POST["weight"];
+        $medical_history = $_POST["medical_history"];
+        $medicines = $_POST["medicines"];
         $area = $_POST["area"];
-        $nurse = $_POST["nurse"];
+        $nurseid = $_POST["nurse"];
 
-        $this->patientsModel->add($name, $lastname, $age, $height, $weight, $area, $nurse);
+        $this->patientsModel->add($name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area);
+
+        $patientid = $this->patientsModel->getLastInserted();
+        var_dump($patientid);
+
+        $this->nursesModel->assignToPatient($nurseid, $patientid);
+
         header("Location: " . $BASE_URL . "patients");
     }
 
@@ -69,16 +83,21 @@ class PatientsController{
 
         $name = $_POST["name"];
         $lastname = $_POST["lastname"];
+        $dni = $_POST["dni"];
         $age = $_POST["age"];
+        $address = $_POST["address"];
+        $phone = $_POST["phone"];
+        $family_phone = $_POST["family_phone"];
         $height = $_POST["height"];
         $weight = $_POST["weight"];
+        $medical_history = $_POST["medical_history"];
+        $medicines = $_POST["medicines"];
         $area = $_POST["area"];
-        $nurse = $_POST["nurse"];
 
         $area = $area == "none" ? $patient->area : $area;
         $nurse = $nurse == "none" ? $patient->nurse : $nurse;
 
-        $this->patientsModel->edit($id, $name, $lastname, $age, $height, $weight, $area, $nurse);
+        $this->patientsModel->edit($id, $name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area);
         header("Location: " . $BASE_URL . "patients");
     }
 
@@ -89,5 +108,36 @@ class PatientsController{
         $this->patientsModel->delete($id);
         header("Location: " . $BASE_URL . "patients");
     }
+
+    // Asigna un enfermero
+    public function assignNurse(){
+        $nurseid = $_POST["nurseid"];
+        $patientid = $_POST["patientid"];
+
+        if($this->nursesModel->checkAssignedPatient($nurseid, $patientid) > 0){
+            echo '<script language="javascript">';
+            echo 'alert("Ese paciente ya esta asignado.");';
+            echo 'history.back();';
+            echo '</script>'; 
+        } else {
+            $this->nursesModel->assignToPatient($nurseid, $patientid);
+            echo '<script language="javascript">';
+            echo 'history.back()';
+            echo '</script>'; 
+        };
+    }
+
+    // Desasigna un enfermero
+    public function deassignNurse(){
+        $nurseid = $_POST["nurseid"];
+        $patientid = $_POST["patientid"];
+
+        $this->nursesModel->deassignToPatient($nurseid, $patientid);
+        echo '<script language="javascript">';
+        echo 'history.back()';
+        echo '</script>'; 
+    }
+
+
 
 }

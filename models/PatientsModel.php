@@ -4,6 +4,12 @@ require_once('Model.php');
 
 class PatientsModel extends Model {
 
+    // Devuelve el id del ultimo insertado
+    function getLastInserted(){
+        return $this->getDb()->lastInsertId();
+    }
+
+
     // Retorna todos los pacientes
     function getAll(){
         $query = $this-> getDb()->prepare('SELECT * FROM patients ORDER BY lastname ASC');
@@ -26,21 +32,50 @@ class PatientsModel extends Model {
     }
 
     // Agregar un paciente
-    function add($name, $lastname, $age, $height, $weight, $area, $nurse){
-        $query = $this-> getDb()->prepare('INSERT INTO patients (name, lastname, age, height, weight, area, nurse) VALUES (?, ?, ?, ?, ?, ?, ?)');
-        $query->execute([$name, $lastname, $age, $height, $weight, $area, $nurse]);
+    function add($name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area){
+        $query = $this-> getDb()->prepare('INSERT INTO patients (name, lastname, dni, age, address, phone, family_phone, height, weight, medical_history,
+         medicines, area) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        $query->execute([$name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area]);
     }
 
     // Edita un paciente
-    function edit($id, $name, $lastname, $age, $height, $weight, $area, $nurse){
-        $query = $this-> getDb()->prepare('UPDATE patients SET name = ?, lastname = ?, age = ?, height = ?, weight = ?, area = ?, nurse = ? WHERE id = ?');
-        $query->execute([$name, $lastname, $age, $height, $weight, $area, $nurse, $id]);
+    function edit($id, $name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area){
+        $query = $this-> getDb()->prepare('UPDATE patients SET name = ?, lastname = ?, dni = ?, age = ?, address = ?, phone = ?, family_phone = ?, height = ?,
+         weight = ?, medical_history = ?, medicines = ?, area = ? WHERE id = ?');
+        $query->execute([$name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area, $id]);
     }
 
     // Elimina un paciente
     function delete($id){
         $query = $this-> getDb()->prepare('DELETE FROM patients WHERE id = ?');
         $query->execute([$id]);
+    }
+
+
+    // Obtiene los pacientes asignados a un area determinada
+    function getAssignedToArea($id){
+        $query = $this-> getDb()->prepare('SELECT * FROM patients LEFT JOIN patient_area ON patients.id = patient_area.patientid WHERE patient_area.areaid = ?');
+        $query->execute([$id]);
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // Asigna un paciente a un area
+    function assignToArea($patientid, $areaid){
+        $query = $this-> getDb()->prepare('INSERT patient_area (patientid, areaid) VALUES (?, ?)');
+        $query->execute([$patientid, $areaid]);
+    }
+
+    // Desasigna un paciente de un area
+    function deassignToArea($patientid, $areaid){
+        $query = $this-> getDb()->prepare('DELETE FROM patient_area WHERE patientid = ? AND areaid = ?');
+        $query->execute([$patientid, $areaid]);
+    }
+
+    // Verifica que el area no esta ya asignada
+    function checkAssignedArea($patientid, $areaid){
+        $query = $this-> getDb()->prepare('SELECT * FROM patient_area WHERE patientid = ? AND areaid = ?');
+        $query->execute([$patientid, $areaid]);
+        return $query->rowCount();
     }
 
 }
