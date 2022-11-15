@@ -1,6 +1,7 @@
 {include "header.tpl"}
 
-
+    <div>
+        <div>
             <img class=" w-20 mx-auto" src="./images/latido-del-corazon.png" alt="Logo Codigo Azul">
             <h2>Llamadas</h2>
             {if $calls}

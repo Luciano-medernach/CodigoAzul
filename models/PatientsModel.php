@@ -4,6 +4,12 @@ require_once('Model.php');
 
 class PatientsModel extends Model {
 
+    // Devuelve el id del ultimo insertado
+    function getLastInserted(){
+        return $this->getDb()->lastInsertId();
+    }
+
+
     // Retorna todos los pacientes
     function getAll(){
         $query = $this-> getDb()->prepare('SELECT * FROM patients ORDER BY lastname ASC');
@@ -26,15 +32,17 @@ class PatientsModel extends Model {
     }
 
     // Agregar un paciente
-    function add($name, $lastname, $age, $height, $weight, $area, $nurse){
-        $query = $this-> getDb()->prepare('INSERT INTO patients (name, lastname, age, height, weight, area, nurse) VALUES (?, ?, ?, ?, ?, ?, ?)');
-        $query->execute([$name, $lastname, $age, $height, $weight, $area, $nurse]);
+    function add($name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area){
+        $query = $this-> getDb()->prepare('INSERT INTO patients (name, lastname, dni, age, address, phone, family_phone, height, weight, medical_history,
+         medicines, area) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        $query->execute([$name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area]);
     }
 
     // Edita un paciente
-    function edit($id, $name, $lastname, $age, $height, $weight, $area, $nurse){
-        $query = $this-> getDb()->prepare('UPDATE patients SET name = ?, lastname = ?, age = ?, height = ?, weight = ?, area = ?, nurse = ? WHERE id = ?');
-        $query->execute([$name, $lastname, $age, $height, $weight, $area, $nurse, $id]);
+    function edit($id, $name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area){
+        $query = $this-> getDb()->prepare('UPDATE patients SET name = ?, lastname = ?, dni = ?, age = ?, address = ?, phone = ?, family_phone = ?, height = ?,
+         weight = ?, medical_history = ?, medicines = ?, area = ? WHERE id = ?');
+        $query->execute([$name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area, $id]);
     }
 
     // Elimina un paciente

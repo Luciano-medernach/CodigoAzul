@@ -43,5 +43,19 @@ class NursesModel extends Model {
         $query->execute([$id]);
     }
 
+
+    // Retorna los enfermeros asignados a un paciente en particular
+    function getAssignedToPatient($id){
+        $query = $this-> getDb()->prepare('SELECT * FROM nurses LEFT JOIN nurse_patient ON nurses.id = nurse_patient.nurseid WHERE nurse_patient.patientid = ?');
+        $query->execute([$id]);
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // Asigna un enfermero a un paciente
+    function assignToPatient($nurseid, $patientid){
+        $query = $this-> getDb()->prepare('INSERT nurse_patient (nurseid, patientid) VALUES (?, ?)');
+        $query->execute([$nurseid, $patientid]);
+    }
+
 }
 ?>
