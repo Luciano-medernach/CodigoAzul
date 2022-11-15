@@ -22,13 +22,44 @@
 
     }
 
+    .card-paciente{
+      @apply bg-clightblue m-4 p-4 text-clightblue/10 cursor-pointer hover:text-cblue;
+    }
+    
+    .card-paciente:hover {
+      box-shadow: 2px -1px 12px 8px rgba(218,236,251,1);
+      -webkit-box-shadow: 2px -1px 12px 8px rgba(218,236,251,1);
+      -moz-box-shadow: 2px -1px 12px 8px rgba(218,236,251,1);
+    }
+    
+    .card-nurse{
+      @apply bg-clightgreen m-4 p-4 text-clightgreen cursor-pointer hover:text-cdarkblue;
+    }
+    
+    .card-nurse:hover {
+
+      box-shadow: 2px -1px 12px 8px rgb(121, 189, 165);
+      -webkit-box-shadow: 2px -1px 12px 8px rgb(121, 189, 165);
+      -moz-box-shadow: 2px -1px 12px 8px rgb(121, 189, 165);
+    }
+
     .inputs-form {
-      @apply bg-transparent border-none  m-2 w-2/3 appearance-none text-cwhite px-2 leading-tight focus:bg-transparent focus:text-xl focus:font-semibold focus:outline-none;
+      @apply bg-transparent border-none  m-2 w-2/3 appearance-none  px-2 leading-tight focus:bg-transparent focus:text-xl focus:font-semibold focus:outline-none;
+    }  
+    
+    .select-form {
+      @apply border-none bg-clightgreen/50 m-2 w-2/3 p-2 pr-4 leading-tight focus:bg-transparent focus:text-lg focus:font-semibold;
     }
 
 
     .btn-white {
       @apply bg-cwhite text-cdarkblue mt-4 px-4 uppercase font-semibold text-xl cursor-pointer text-center;
+        box-shadow: 4px 8px 8px 0px #0000001A, 2px 8px 8px 0px #0000001A inset;
+
+    }
+
+    .btn {
+      @apply text-cdarkblue mt-4 px-4 uppercase font-semibold text-xl cursor-pointer text-center;
         box-shadow: 4px 8px 8px 0px #0000001A, 2px 8px 8px 0px #0000001A inset;
 
     }

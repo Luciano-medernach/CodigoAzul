@@ -1,7 +1,7 @@
 {include "header.tpl"}
 
-<body class=" bg-gradient-to-b from-cwhite to-clightblue mb-8">
-    <div class="grid gap-8 grid-cols-3 mt-10 max-w-3xl mx-auto ">
+<body class=" bg-gradient-to-b from-cwhite to-clightblue min-h-screen ">
+    <div class="grid gap-8 grid-cols-3  mt-10 max-w-3xl mx-auto pb-20">
 
         <div onclick="window.location='calls';" class="col-start-1 col-end-3 bg-cpink/25 box-with-shadow w-full h-full ">
             <img class=" w-20 mx-auto" src="./images/latido-del-corazon.png" alt="Logo Codigo Azul">
