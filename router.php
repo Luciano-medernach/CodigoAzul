@@ -60,6 +60,10 @@
             $nursesController->showAdd();
             break;
 
+        case "nurse-edit":
+            $nursesController->showEdit();
+            break;
+
         // * Areas View
         case "areas":
             $areasController->showList();
@@ -69,7 +73,18 @@
         case "signin":
             $usersController->showSignin();
             break;
-        
+
+        case "users":
+            $usersController->showList();
+            break;
+
+        case "user-add":
+            $usersController->showAdd();
+            break;
+
+        case "user-edit":
+            $usersController->showEdit();
+            break;
 
         // * DB ACTIONS
         // * Patients Model
@@ -90,6 +105,10 @@
             $nursesController->add();
             break;
 
+        case "db-nurse-edit":
+            $nursesController->edit();
+            break;
+
         case "db-nurse-delete":
             $nursesController->delete();
             break;
@@ -97,6 +116,10 @@
         // * Areas Model
         case "db-area-add":
             $areasController->add();
+            break;
+
+        case "db-area-edit":
+            $areasController->edit();
             break;
 
         case "db-area-delete":
@@ -108,6 +131,17 @@
             $usersController->signin();
             break;
 
+        case "db-user-add":
+            $usersController->add();
+            break;
+
+        case "db-user-edit":
+            $usersController->edit();
+            break;
+
+        case "db-user-delete":
+            $usersController->delete();
+            break;
 
 
         case "logout":

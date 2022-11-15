@@ -23,7 +23,7 @@ class NursesController{
 
     // Muestra el formulario de adicion de enfermeros
     public function showEdit(){
-        $id = $_POST[$id];
+        $id = $_GET["id"];
         $nurse = $this->nursesModel->getById($id);
         $this->nursesView->showEdit($nurse);
     }

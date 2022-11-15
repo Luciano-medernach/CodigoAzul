@@ -28,13 +28,13 @@
 
         // Muestra el formulario de adicion de usuarios
         function showAdd(){
-            $this->getSmarty()->display('templates/users/usersAdd.tpl');
+            $this->getSmarty()->display('templates/users/user-add.tpl');
         }
 
         // Muestra el formulario de adicion de usuarios
         function showEdit($user){
             $this->getSmarty()->assign('user', $user);
-            $this->getSmarty()->display('templates/users/usersEdit.tpl');
+            $this->getSmarty()->display('templates/users/user-edit.tpl');
         }
 
     }

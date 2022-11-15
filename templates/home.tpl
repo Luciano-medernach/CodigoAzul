@@ -71,4 +71,17 @@
         
         
     </div>
+
+    {if $admin}
+        <div onclick="window.location='users';">
+            <h2>Usuarios</h2>
+            {if $users}
+                {foreach from=$users item=user}
+                    <p>{$user->name} {$user->lastname}</p>
+                {/foreach}
+            {else}
+                <p>Aun no hay ningun usuario.</p>
+            {/if}
+        </div>
+    {/if}
 </body>

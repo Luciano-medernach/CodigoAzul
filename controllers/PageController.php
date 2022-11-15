@@ -5,6 +5,7 @@ include_once('models/CallsModel.php');
 include_once('models/PatientsModel.php');
 include_once('models/AreasModel.php');
 include_once('models/NursesModel.php');
+include_once('models/UsersModel.php');
 
 class PageController{
 
@@ -14,6 +15,7 @@ class PageController{
         $this->patientsModel = new PatientsModel();
         $this->areasModel = new AreasModel();
         $this->nursesModel = new NursesModel();
+        $this->usersModel = new UsersModel();
     }
 
     // Muestra el inicio
@@ -22,7 +24,8 @@ class PageController{
         $patients = $this->patientsModel->getLast();
         $nurses = $this->nursesModel->getLast();
         $areas = $this->areasModel->getLast();
-        $this->pageView->showHome($calls, $patients, $nurses, $areas);
+        $users = $this->usersModel->getLast();
+        $this->pageView->showHome($calls, $patients, $nurses, $areas, $users);
     }
 
     // Pantalla de error
