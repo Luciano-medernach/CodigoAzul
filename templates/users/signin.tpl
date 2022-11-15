@@ -1,4 +1,3 @@
-{include "../header.tpl"}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,6 @@
     <img class=" mx-auto w-60 pt-6" src="./images/logo2white.png" alt="Logo Codigo Azul">
     <h1 class="py-12 font-bold text-center text-cwhite text-4xl">Iniciar sesion</h1>
 
-        <button class="btn-blue">Ingresar</button>
 
 
     <form class="mx-auto flex flex-col items-center " action="db-signin" method="POST">
