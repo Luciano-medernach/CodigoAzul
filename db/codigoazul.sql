@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2022 a las 20:47:57
+-- Tiempo de generación: 15-11-2022 a las 02:57:16
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -32,6 +32,13 @@ CREATE TABLE `areas` (
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `areas`
+--
+
+INSERT INTO `areas` (`id`, `name`) VALUES
+(2, 'Sector 11');
+
 -- --------------------------------------------------------
 
 --
@@ -55,9 +62,16 @@ CREATE TABLE `calls` (
 
 CREATE TABLE `nurses` (
   `id` int(11) NOT NULL,
-  `name` int(11) NOT NULL,
-  `lastname` int(11) NOT NULL
+  `name` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `nurses`
+--
+
+INSERT INTO `nurses` (`id`, `name`, `lastname`) VALUES
+(3, 'Emi', 'Martinez');
 
 -- --------------------------------------------------------
 
@@ -70,11 +84,18 @@ CREATE TABLE `patients` (
   `name` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `age` int(11) NOT NULL,
-  `height` int(11) NOT NULL,
-  `weight` int(11) NOT NULL,
-  `location` int(11) NOT NULL,
+  `height` float NOT NULL,
+  `weight` float NOT NULL,
+  `area` int(11) NOT NULL,
   `nurse` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `patients`
+--
+
+INSERT INTO `patients` (`id`, `name`, `lastname`, `age`, `height`, `weight`, `area`, `nurse`) VALUES
+(2, 'Julio', 'Martinez', 46, 1.67, 44, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -126,8 +147,8 @@ ALTER TABLE `nurses`
 --
 ALTER TABLE `patients`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `location` (`location`),
-  ADD KEY `nurse` (`nurse`);
+  ADD KEY `nurse` (`nurse`),
+  ADD KEY `area` (`area`) USING BTREE;
 
 --
 -- Indices de la tabla `users`
@@ -144,7 +165,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `areas`
 --
 ALTER TABLE `areas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `calls`
@@ -156,19 +177,19 @@ ALTER TABLE `calls`
 -- AUTO_INCREMENT de la tabla `nurses`
 --
 ALTER TABLE `nurses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -184,7 +205,7 @@ ALTER TABLE `calls`
 -- Filtros para la tabla `patients`
 --
 ALTER TABLE `patients`
-  ADD CONSTRAINT `patients_ibfk_1` FOREIGN KEY (`location`) REFERENCES `areas` (`id`),
+  ADD CONSTRAINT `patients_ibfk_1` FOREIGN KEY (`area`) REFERENCES `areas` (`id`),
   ADD CONSTRAINT `patients_ibfk_2` FOREIGN KEY (`nurse`) REFERENCES `nurses` (`id`);
 COMMIT;
 
