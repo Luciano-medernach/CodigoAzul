@@ -109,4 +109,35 @@ class PatientsController{
         header("Location: " . $BASE_URL . "patients");
     }
 
+    // Asigna un enfermero
+    public function assignNurse(){
+        $nurseid = $_POST["nurseid"];
+        $patientid = $_POST["patientid"];
+
+        if($this->nursesModel->checkAssignedPatient($nurseid, $patientid) > 0){
+            echo '<script language="javascript">';
+            echo 'alert("Ese paciente ya esta asignado.");';
+            echo 'history.back();';
+            echo '</script>'; 
+        } else {
+            $this->nursesModel->assignToPatient($nurseid, $patientid);
+            echo '<script language="javascript">';
+            echo 'history.back()';
+            echo '</script>'; 
+        };
+    }
+
+    // Desasigna un enfermero
+    public function deassignNurse(){
+        $nurseid = $_POST["nurseid"];
+        $patientid = $_POST["patientid"];
+
+        $this->nursesModel->deassignToPatient($nurseid, $patientid);
+        echo '<script language="javascript">';
+        echo 'history.back()';
+        echo '</script>'; 
+    }
+
+
+
 }

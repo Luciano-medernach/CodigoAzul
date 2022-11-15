@@ -20,6 +20,16 @@
             $this->getSmarty()->display('templates/nurses/nurses.tpl');
         }
 
+        // Muestra un enfermero
+        function show($nurse, $areas, $assignedAreas, $patients, $assignedPatients){
+            $this->getSmarty()->assign('nurse', $nurse);
+            $this->getSmarty()->assign('areas', $areas);
+            $this->getSmarty()->assign('assignedAreas', $assignedAreas);
+            $this->getSmarty()->assign('patients', $patients);
+            $this->getSmarty()->assign('assignedPatients', $assignedPatients);
+            $this->getSmarty()->display('templates/nurses/nurse.tpl');
+        }
+
         // Muestra el formulario de adicion de enfermeros
         function showAdd(){
             $this->getSmarty()->display('templates/nurses/nurse-add.tpl');

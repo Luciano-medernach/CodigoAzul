@@ -51,7 +51,7 @@ class UsersModel extends Model {
     }
 
     // Verifica que el nombre de usuario no exista
-    function checkUsernam($username){
+    function checkUsername($username){
         $query = $this-> getDb()->prepare('SELECT * FROM users WHERE username = ?');
         $query->execute([$username]);
         return $query->rowCount();

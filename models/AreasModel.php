@@ -22,7 +22,7 @@ class AreasModel extends Model {
     function getById($id){
         $query = $this-> getDb()->prepare('SELECT * FROM areas WHERE id = ?');
         $query->execute([$id]);
-        return $query->fetchAll(PDO::FETCH_OBJ);
+        return $query->fetch(PDO::FETCH_OBJ);
     }
 
     // Verifica si aun quedan pacientes en el area

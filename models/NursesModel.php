@@ -44,6 +44,14 @@ class NursesModel extends Model {
     }
 
 
+    // * PATIENTS 
+    // Obtiene los pacientes asignados a un enfermero determinado
+    function getPatientsAssigned($id){
+        $query = $this-> getDb()->prepare('SELECT * FROM patients LEFT JOIN nurse_patient ON patients.id = nurse_patient.patientid WHERE nurse_patient.nurseid = ?');
+        $query->execute([$id]);
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
     // Retorna los enfermeros asignados a un paciente en particular
     function getAssignedToPatient($id){
         $query = $this-> getDb()->prepare('SELECT * FROM nurses LEFT JOIN nurse_patient ON nurses.id = nurse_patient.nurseid WHERE nurse_patient.patientid = ?');
@@ -55,6 +63,55 @@ class NursesModel extends Model {
     function assignToPatient($nurseid, $patientid){
         $query = $this-> getDb()->prepare('INSERT nurse_patient (nurseid, patientid) VALUES (?, ?)');
         $query->execute([$nurseid, $patientid]);
+    }
+
+    // Verifica que el paciente no este ya asignado
+    function checkAssignedPatient($nurseid, $patientid){
+        $query = $this-> getDb()->prepare('SELECT * FROM nurse_patient WHERE nurseid = ? AND patientid = ?');
+        $query->execute([$nurseid, $patientid]);
+        return $query->rowCount();
+    }
+
+    // Desasigna un enfermero a un paciente
+    function deassignToPatient($nurseid, $patientid){
+        $query = $this-> getDb()->prepare('DELETE FROM nurse_patient WHERE nurseid = ? AND patientid = ?');
+        $query->execute([$nurseid, $patientid]);
+    }
+
+
+
+    // * AREAS
+    // Retorna los enfermeros asignados a un area en particular
+    function getAssignedToArea($id){
+        $query = $this-> getDb()->prepare('SELECT * FROM nurses LEFT JOIN nurse_area ON nurses.id = nurse_area.nurseid WHERE nurse_area.areaid = ?');
+        $query->execute([$id]);
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // Asigna un enfermero a un area
+    function assignToArea($nurseid, $areaid){
+        $query = $this-> getDb()->prepare('INSERT nurse_area (nurseid, areaid) VALUES (?, ?)');
+        $query->execute([$nurseid, $areaid]);
+    }
+
+    // Obtiene las areas asignadas a un enfermero determinado
+    function getAreasAssigned($id){
+        $query = $this-> getDb()->prepare('SELECT * FROM areas LEFT JOIN nurse_area ON areas.id = nurse_area.areaid WHERE nurse_area.nurseid = ?');
+        $query->execute([$id]);
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // Verifica que el area no este ya asignado
+    function checkAssignedArea($nurseid, $areaid){
+        $query = $this-> getDb()->prepare('SELECT * FROM nurse_area WHERE nurseid = ? AND areaid = ?');
+        $query->execute([$nurseid, $areaid]);
+        return $query->rowCount();
+    }
+
+    // Desasigna un enfermero a un area
+    function deassignToArea($nurseid, $areaid){
+        $query = $this-> getDb()->prepare('DELETE FROM nurse_area WHERE nurseid = ? AND areaid = ?');
+        $query->execute([$nurseid, $areaid]);
     }
 
 }
