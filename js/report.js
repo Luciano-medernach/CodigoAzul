@@ -1,9 +1,12 @@
 const chartContainer = document.getElementById("chartContainer");
+const filter = document.getElementById("filter");
+
+filter.addEventListener("onchange", () => {});
 
 // Crea la solicitud de AJAX
 let ajax_request = new XMLHttpRequest();
 
-let ajax_url = "/codigoazul/ajax-report";
+let ajax_url = "/codigoazul/ajax-report?filter=" + filter.value;
 
 ajax_request.onreadystatechange = function () {
   // Verifica que el estado sea correcto
