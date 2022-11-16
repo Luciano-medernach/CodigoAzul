@@ -39,7 +39,7 @@
     }
     
     .card-nurse{
-      @apply bg-clightgreen m-4 p-4 text-clightgreen cursor-pointer hover:text-cdarkblue;
+      @apply bg-clightgreen m-2  text-clightgreen cursor-pointer hover:text-cdarkblue;
     }
     
     .card-nurse:hover {
