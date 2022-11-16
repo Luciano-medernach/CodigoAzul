@@ -1,19 +1,19 @@
 {include "../header.tpl"}
 
-<body class="bg-gradient-to-b from-cwhite to-clightblue h-screen text-cdarkblue">
+<body class="bg-gradient-to-b from-cwhite to-clightblue min-h-screen text-cdarkblue pb-20">
     {if $admin}
-        <a class=" block mx-auto p-2 w-1/3 text-3xl text-cwhite  bg-cpink btn-white " href="nurse-add">Agregar Personal</a>
+        <a class=" block mx-auto p-2 w-1/3 text-xl text-cwhite  bg-cpink btn-white " href="nurse-add">Agregar Personal</a>
     {/if}
     {if $nurses}
-        <div class="mt-12 grid gap-6 grid-cols-2 grid-rows-3 justify-items-center mx-auto   mx-20">
+        <div class="max-w-2xl grid gap-8 grid-cols-3  justify-items-center  mx-auto mt-12 mx-20">
         
         {foreach from=$nurses item=nurse }
             
-            <div class=" flex flex-col box-with-shadow w-2/3  ">   
+            <div class=" flex flex-col box-with-shadow w-80 ">   
                 <form class="card-nurse " action="nurse" method="GET">
-                    <img class=" w-28  mx-auto" src="./images/paciente2.png" alt="Logo Codigo Azul">
+                    <img class=" w-32  mx-auto" src="./images/medico2.png" alt="Logo Codigo Azul">
                     <input type="hidden" name="id" value="{$nurse->id}">
-                    <button class="mt-2 text-2xl font-semibold">Ver más</button>
+                    <button class="text-lg font-semibold">Ver más</button>
                 </form>
                 <p class="text-2xl font-bold" >{$nurse->lastname},</p>
                 <p class="text-2xl font-bold mb-4" >{$nurse->name}</p>

@@ -5,7 +5,7 @@
     {if $patients}
         <div class="max-w-xl grid gap-6 grid-cols-3   justify-items-center  mx-auto mt-12">
         {foreach from=$patients item=patient }
-            <div class=" flex flex-col box-with-shadow w-full ">
+            <div class=" flex flex-col box-with-shadow w-xl">
                     
                 <form class="card-paciente " action="patient" method="GET">
                     <img class=" w-20  mx-auto" src="./images/paciente2.png" alt="Logo Codigo Azul">
@@ -30,8 +30,8 @@
             </div>
         {/foreach}
         {if $admin}
-            <div class="lg:m-12 flex flex-col justify-center items-center w-full bg-cpink btn-white lg:rounded-full">
-                <img class=" w-12 mx-auto" src="./images/reporte-de-salud.png" alt="Logo Codigo Azul">
+            <div class="mt-12 h-40 w-40 flex flex-col font-bold text-xl box-with-shadow justify-center items-center bg-cpink cursor-pointer">
+                <img class=" w-12 mx-auto" src="./images/paciente.png" alt="Logo Codigo Azul">
                 <a class=" w-full text-md text-cwhite " href="patient-add">Agregar paciente</a>
             </div>
         {/if}

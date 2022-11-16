@@ -12,7 +12,7 @@
     {if $id}
         <a class="btn-blue py-2 p-8" href="home"> ⌂ </a>
         <img class="  w-80" src="./images/logo.png" alt="Logo Codigo Azul">
-        <p class="  text-cdarkblue font-semibold">¡Bienvenido {$username}! <a class=" btn-blue   p-2 lg:pl-6 lg:pr-8" href="logout">Cerrar sesion</a></p>
+        <p class="  text-cdarkblue font-semibold">¡Bienvenido {$username}! <a class=" btn-blue p-2 lg:pl-6 lg:pr-8" href="logout">Cerrar sesion</a></p>
         
     {else}
         <img class=" ml-6 w-80" src="./images/logo.png" alt="Logo Codigo Azul">
