@@ -62,4 +62,27 @@
     {else}
         <h3>Aun no hay enfermeros asignados.</h3>
     {/if}
+
+    {if $admin}
+        <form action="db-area-assign-origin" method="POST">
+            <input type="text" name="origin" maxlength="50" required/>
+            <input type="hidden" name="areaid" value="{$area->id}">
+            <button>Asignar origen de llamadas.</button>
+        </form>
+    {/if}
+
+    {if $assignedOrigins}
+        {foreach from=$assignedOrigins item=origin}
+            <p>{$origin->origin}</p>
+            {if $admin}
+                <form action="db-area-deassign-origin" method="POST">
+                    <input type="hidden" name="areaid" value="{$area->id}">
+                    <input type="hidden" name="origin" value="{$origin->origin}">
+                    <button>Desasignar</button>
+                </form>
+            {/if}
+        {/foreach}
+    {else}
+        <h3>Aun no hay formas de llamado desde esta area.</h3>
+    {/if}
 </body>

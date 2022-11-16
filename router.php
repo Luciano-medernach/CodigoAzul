@@ -28,10 +28,20 @@
     $urlParts = explode('/',$_GET['action']);
 
     switch($urlParts[0]){
+        // * AJAX
+        case "ajax-report":
+            $pageController->createReport();
+            break;
+
+
         // * VIEW ACTIONS
         // * Page View
         case "home":
             $pageController->showHome(); 
+            break;
+
+        case "reports":
+            $pageController->showReports();
             break;
 
         // * Patients View
@@ -156,6 +166,14 @@
 
         case "db-area-deassign-nurse":
             $areasController->deassignNurse();
+            break;
+
+        case "db-area-assign-origin":
+            $areasController->assignOrigin();
+            break;
+
+        case "db-area-deassign-origin":
+            $areasController->deassignOrigin();
             break;
 
         // * Users Model

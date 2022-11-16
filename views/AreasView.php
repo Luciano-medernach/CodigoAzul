@@ -21,12 +21,13 @@
         }
 
         // Muestra el area
-        function show($area, $patients, $assignedPatients, $nurses, $assignedNurses){
+        function show($area, $patients, $assignedPatients, $nurses, $assignedNurses, $assignedOrigins){
             $this->getSmarty()->assign('area', $area);
             $this->getSmarty()->assign('patients', $patients);
             $this->getSmarty()->assign('assignedPatients', $assignedPatients);
             $this->getSmarty()->assign('nurses', $nurses);
             $this->getSmarty()->assign('assignedNurses', $assignedNurses);
+            $this->getSmarty()->assign('assignedOrigins', $assignedOrigins);
             $this->getSmarty()->display('templates/areas/area.tpl');
         }
 

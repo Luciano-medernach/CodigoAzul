@@ -29,5 +29,10 @@
             $this->getSmarty()->display('templates/error.tpl');
         }
 
+        // Muestra los reportes
+        function showReports(){
+            $this->getSmarty()->display('templates/reports.tpl');
+        }
+
     }
 ?>

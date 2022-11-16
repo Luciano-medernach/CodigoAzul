@@ -33,5 +33,26 @@ class PageController{
         $this->pageView->showError();
     }
 
+    // Muestra los reportes
+    public function showReports(){
+        $calls = $this->callsModel->getAll();
+        $areas = $this->areasModel->getAll();
+
+        $this->pageView->showReports();
+    }
+
+
+    // Ajax reportes
+    public function createReport(){
+        $calls = $this->callsModel->getCountByDate();
+        $data = array();
+        
+        foreach ($calls as $call) {
+            array_push($data, array("y" => $call->count, "label" => $call->date));
+        }
+
+        echo json_encode($data, JSON_NUMERIC_CHECK);
+
+    }
 
 }
