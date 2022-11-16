@@ -3,7 +3,7 @@
 <body class="bg-gradient-to-b from-cwhite to-clightblue  min-h-screen text-cdarkblue pb-20">
     <h3 class="font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite"> Editar datos  </h3>
             
-    <form class="text-base box-with-shadow  w-2/3 mx-auto  p-4 mt-8 "  action="db-patient-edit" method="POST">
+    <form class="text-base box-with-shadow  w-2/3 mx-auto  p-4 mt-8 max-w-xl"  action="db-patient-edit" method="POST">
     <div class="grid grid-cols-2 gap-2 justify-items-center  pb-2">
             <input class=" w-full text-cdarkgray pl-2 bg-clightblue  h-8 inputs-form " type="text" name="name" placeholder="Nombre" maxlength="50" value="{$patient->name}" required />
             <input class=" w-full text-cdarkgray pl-2 bg-clightblue  h-8 inputs-form" type="text" name="lastname" placeholder="Apellido" maxlength="50" value="{$patient->lastname}" required />
