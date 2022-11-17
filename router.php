@@ -9,6 +9,7 @@
     require_once("controllers/PatientsController.php");
     require_once("controllers/AreasController.php");
     require_once("controllers/NursesController.php");
+    require_once("controllers/CallsController.php");
 
 
     // Instancia los controladores
@@ -17,6 +18,7 @@
     $patientsController = new PatientsController();
     $areasController = new AreasController();
     $nursesController = new NursesController();
+    $callsController = new CallsController();
 
 
 
@@ -33,6 +35,10 @@
             $pageController->createReport();
             break;
 
+        case "ajax-get-calls":
+            $callsController->getAll();
+            break;
+
 
         // * VIEW ACTIONS
         // * Page View
@@ -42,6 +48,11 @@
 
         case "reports":
             $pageController->showReports();
+            break;
+
+        // * Calls VIEW
+        case "calls":
+            $callsController->showList();
             break;
 
         // * Patients View

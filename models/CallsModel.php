@@ -6,7 +6,7 @@ class CallsModel extends Model {
 
     // Retorna todas las llamadas
     function getAll(){
-        $query = $this-> getDb()->prepare('SELECT * FROM calls ORDER BY date DESC');
+        $query = $this-> getDb()->prepare('SELECT * FROM calls LEFT JOIN areas ON areas.id = calls.area');
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }

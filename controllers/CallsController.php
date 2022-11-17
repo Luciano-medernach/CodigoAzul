@@ -12,8 +12,13 @@ class CallsController{
 
     // Muestra el listado de llamadas
     public function showList(){
+        $this->callsView->showList();
+    }
+
+    // Imprime todas las llamadas
+    public function getAll(){
         $calls = $this->callsModel->getAll();
-        $this->callsView->showList($calls);
+        echo json_encode($calls);
     }
 
 }

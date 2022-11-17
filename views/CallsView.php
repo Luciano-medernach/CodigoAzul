@@ -15,9 +15,8 @@
         }
 
         // Muestra el listado de llamadas
-        function showList($calls){
-            $this->getSmarty()->assign('calls', $calls);
-            $this->getSmarty()->display('templates/calls.tpl');
+        function showList(){
+            $this->getSmarty()->display('templates/calls/calls.tpl');
         }
 
     }
