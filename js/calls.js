@@ -26,20 +26,35 @@ function updateCalls() {
 
           let call = document.createElement("p");
           let attended = element.attended == 1 ? "ATENTIDA" : "NO ATENDIDA";
-          call.textContent =
-            element.type +
-            " " +
-            element.name +
-            " " +
-            element.origin +
-            " " +
-            element.date +
-            " " +
-            element.hour +
-            " " +
-            attended +
-            " " +
-            element.time;
+
+          if (element.attended) {
+            call.textContent =
+              element.type +
+              " " +
+              element.name +
+              " EN " +
+              element.origin +
+              " EL DIA " +
+              element.date +
+              " A LAS " +
+              element.hour +
+              " " +
+              attended +
+              " en " +
+              element.time +
+              " segundos.";
+          } else {
+            call.textContent =
+              element.type +
+              " " +
+              element.name +
+              " EN " +
+              element.origin +
+              " EL DIA " +
+              element.date +
+              " A LAS " +
+              element.hour;
+          }
 
           call.textContent = call.textContent.toUpperCase();
 
