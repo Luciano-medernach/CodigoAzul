@@ -726,6 +726,11 @@ video {
   margin-right: auto;
 }
 
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .mx-20 {
   margin-left: 5rem;
   margin-right: 5rem;
@@ -741,11 +746,6 @@ video {
   margin-right: 1rem;
 }
 
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
 .ml-6 {
   margin-left: 1.5rem;
 }
@@ -758,12 +758,12 @@ video {
   margin-bottom: 2rem;
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mb-10 {
@@ -772,6 +772,10 @@ video {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
 }
 
 .mt-4 {
@@ -794,10 +798,6 @@ video {
   margin-bottom: 3rem;
 }
 
-.mt-6 {
-  margin-top: 1.5rem;
-}
-
 .ml-4 {
   margin-left: 1rem;
 }
@@ -812,6 +812,10 @@ video {
 
 .flex {
   display: flex;
+}
+
+.inline-flex {
+  display: inline-flex;
 }
 
 .grid {
@@ -1047,11 +1051,6 @@ video {
   background-color: rgb(240 245 249 / var(--tw-bg-opacity));
 }
 
-.bg-clightgreen {
-  --tw-bg-opacity: 1;
-  background-color: rgb(121 189 165 / var(--tw-bg-opacity));
-}
-
 .bg-white\/70 {
   background-color: rgb(255 255 255 / 0.7);
 }
@@ -1059,6 +1058,11 @@ video {
 .bg-cpink {
   --tw-bg-opacity: 1;
   background-color: rgb(255 185 210 / var(--tw-bg-opacity));
+}
+
+.bg-clightgreen {
+  --tw-bg-opacity: 1;
+  background-color: rgb(121 189 165 / var(--tw-bg-opacity));
 }
 
 .bg-cwhite\/60 {
@@ -1086,9 +1090,8 @@ video {
   background-color: rgb(11 32 64 / 0.6);
 }
 
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+.bg-cpink\/50 {
+  background-color: rgb(255 185 210 / 0.5);
 }
 
 .bg-gradient-to-b {
@@ -1121,6 +1124,14 @@ video {
 
 .to-cdarkblue {
   --tw-gradient-to: #0b2040;
+}
+
+.to-cpink {
+  --tw-gradient-to: #FFB9D2;
+}
+
+.to-cpink\/50 {
+  --tw-gradient-to: rgb(255 185 210 / 0.5);
 }
 
 .p-1 {
@@ -1225,6 +1236,18 @@ video {
 
 .pt-6 {
   padding-top: 1.5rem;
+}
+
+.pl-20 {
+  padding-left: 5rem;
+}
+
+.pl-28 {
+  padding-left: 7rem;
+}
+
+.pl-44 {
+  padding-left: 11rem;
 }
 
 .text-center {
@@ -1347,6 +1370,15 @@ video {
 .focus\:bg-cblue:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(13 93 161 / var(--tw-bg-opacity));
+}
+
+.focus\:bg-transparent:focus {
+  background-color: transparent;
+}
+
+.focus\:text-lg:focus {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .focus\:font-semibold:focus {

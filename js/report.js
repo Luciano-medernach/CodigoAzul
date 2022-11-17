@@ -73,6 +73,7 @@ function updateReport() {
 
         button.textContent = "Exportar como PDF";
         button.id = "exportButton";
+        button.className = "mt-6 pl-20 px-2 text-center btn py-2 text-xl font-bold text-cblue bg-cwhite";
 
         let dataurl = document
           .getElementById("chartContainer")
