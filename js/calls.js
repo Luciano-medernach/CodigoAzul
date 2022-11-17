@@ -25,7 +25,7 @@ function updateCalls() {
           let notUpload = false;
 
           let call = document.createElement("p");
-          let attended = element.attended == 1 ? "Atendida" : "No atendida";
+          let attended = element.attended == 1 ? "ATENTIDA" : "NO ATENDIDA";
           call.textContent =
             element.type +
             " " +
@@ -40,7 +40,6 @@ function updateCalls() {
             attended +
             " " +
             element.time;
-
           call.classList.add("js-generated");
 
           let nodes = document.getElementsByClassName("js-generated");
@@ -54,14 +53,18 @@ function updateCalls() {
           if (!notUpload) {
             if (element.type == "urgent") {
               if (element.attended) {
+                call.classList.add(" box-with-shadow my-2 w-full");
                 containerUA.insertBefore(call, containerUA.firstChild);
               } else {
+                call.classList.add(" box-with-shadow my-2 w-full");
                 containerUNA.insertBefore(call, containerUNA.firstChild);
               }
             } else {
               if (element.attended) {
+                call.classList.add(" box-with-shadow my-2 w-full");
                 containerNA.insertBefore(call, containerNA.firstChild);
               } else {
+                call.classList.add(" box-with-shadow my-2 w-full");
                 containerNNA.insertBefore(call, containerNNA.firstChild);
               }
             }
