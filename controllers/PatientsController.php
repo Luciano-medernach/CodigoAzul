@@ -5,6 +5,9 @@ include_once('models/PatientsModel.php');
 include_once('models/AreasModel.php');
 include_once('models/NursesModel.php');
 
+include_once('helpers/auth.helper.php');
+
+
 class PatientsController{
 
     public function __construct(){
@@ -16,12 +19,16 @@ class PatientsController{
 
     // Muestra el listado de pacientes
     public function showList(){
+        AuthHelper::checkLoggedIn();
+
         $patients = $this->patientsModel->getAll();
         $this->patientsView->showList($patients);
     }
 
     // Muestra el paciente
     public function show(){
+        AuthHelper::checkLoggedIn();
+
         $id = $_GET["id"];
         $patient = $this->patientsModel->getById($id);
         $areas = $this->areasModel->getAll();
@@ -33,6 +40,8 @@ class PatientsController{
 
     // Muestra el formulario de adicion de pacientes
     public function showAdd(){
+        AuthHelper::checkLoggedIn();
+
         $areas = $this->areasModel->getAll();
         $nurses = $this->nursesModel->getAll();
         $this->patientsView->showAdd($areas, $nurses);
@@ -40,6 +49,8 @@ class PatientsController{
 
     // Muestra el formulario de edicion de pacientes
     public function showEdit(){
+        AuthHelper::checkLoggedIn();
+
         $id = $_GET["id"];
         $areas = $this->areasModel->getAll();
         $nurses = $this->nursesModel->getAll();

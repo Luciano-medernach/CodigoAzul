@@ -47,13 +47,13 @@
         
         <p>Area asignada: {$patient->area}</p>    
         {if $admin}
-                <form action="patient-assign-area" method="POST">
+                <form action="db-area-assign-patient" method="POST">
                     <select class="w-2/3  bg-clightblue px-1 mb-4" name="areaid" required>
                         {foreach from=$areas item=area}
                             <option value="{$area->id}">{$area->name}</option>
                         {/foreach}
                     </select>
-                    <input type="hidden" name="id" value="{$patient->id}">
+                    <input type="hidden" name="patientid" value="{$patient->id}">
                     <button class="w-2/3 cursor-pointer bg-cblue text-cwhite px-8">Reasignar area</button>
                 </form>
             {/if}

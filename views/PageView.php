@@ -15,8 +15,9 @@
         }
 
         // Muestra el inicio de la pagina
-        function showHome($calls, $patients, $nurses, $areas, $users){
+        function showHome($calls, $averageTime, $patients, $nurses, $areas, $users){
             $this->getSmarty()->assign('calls', $calls);
+            $this->getSmarty()->assign('averageTime', $averageTime);
             $this->getSmarty()->assign('patients', $patients);
             $this->getSmarty()->assign('nurses', $nurses);
             $this->getSmarty()->assign('areas', $areas);

@@ -7,6 +7,8 @@ include_once('models/AreasModel.php');
 include_once('models/NursesModel.php');
 include_once('models/UsersModel.php');
 
+include_once('helpers/auth.helper.php');
+
 class PageController{
 
     public function __construct(){
@@ -20,12 +22,14 @@ class PageController{
 
     // Muestra el inicio
     public function showHome(){
+        AuthHelper::checkLoggedIn();
         $calls = $this->callsModel->getByType("urgents");
+        $averageTime = $this->callsModel->getAverageTime();
         $patients = $this->patientsModel->getLast();
         $nurses = $this->nursesModel->getLast();
         $areas = $this->areasModel->getLast();
         $users = $this->usersModel->getLast();
-        $this->pageView->showHome($calls, $patients, $nurses, $areas, $users);
+        $this->pageView->showHome($calls, $averageTime, $patients, $nurses, $areas, $users);
     }
 
     // Pantalla de error
@@ -35,6 +39,8 @@ class PageController{
 
     // Muestra los reportes
     public function showReports(){
+        AuthHelper::checkLoggedIn();
+
         $calls = $this->callsModel->getAll();
         $areas = $this->areasModel->getAll();
 

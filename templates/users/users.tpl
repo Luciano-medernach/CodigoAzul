@@ -4,11 +4,13 @@
 <h3 class="font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite"> Usuarios  </h3>
     
     {if $users}
+        <input type="text" id="name-search" placeholder="Nombre" maxlength="50">
+
         <div class="max-w-2xl grid gap-6 grid-cols-2   justify-items-center  mx-auto mt-12 pb-12">
         {foreach from=$users item=user }
             <div class=" flex flex-col box-with-shadow w-80">
             {if $user->admin}
-                <p class="text-xl font-bold mb-4 text-cwhite bg-cblue " >{$user->lastname}, {$user->name}</p>
+                <p class="name text-xl font-bold mb-4 text-cwhite bg-cblue " >{$user->lastname}, {$user->name}</p>
             {else}
                 <p class="text-xl font-bold mb-4" >{$user->lastname}, {$user->name}</p>
             {/if}
@@ -32,5 +34,5 @@
     {/if}
 
     <a class=" block mx-auto p-2 w-60 text-xl text-cwhite  bg-cblue btn-white " href="user-add">Agregar usuario</a>
-
+    <script src="./js/userSearch.js"></script>
 </body>

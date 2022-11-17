@@ -5,6 +5,9 @@ include_once('models/AreasModel.php');
 include_once('models/NursesModel.php');
 include_once('models/PatientsModel.php');
 
+include_once('helpers/auth.helper.php');
+
+
 class AreasController{
 
     public function __construct(){
@@ -16,12 +19,15 @@ class AreasController{
 
     // Muestra el listado de areas
     public function showList(){
+        AuthHelper::checkLoggedIn();
         $areas = $this->areasModel->getAll();
         $this->areasView->showList($areas);
     }
 
     // Muestra el area
     public function show(){
+        AuthHelper::checkLoggedIn();
+
         $id = $_GET["id"];
         $area = $this->areasModel->getById($id);
         $patients = $this->patientsModel->getAll($id);
@@ -73,14 +79,18 @@ class AreasController{
         $patientid = $_POST["patientid"];
         $areaid = $_POST["areaid"];
 
-        if($this->patientsModel->checkAssignedArea($patientid, $areaid) > 0){
+        if($this->patientsModel->getById($patientid)->area == $areaid){
             echo '<script language="javascript">';
-            echo 'alert("Ya se encuentra asignado.");';
+            echo 'alert("El paciente se encuentra asignado a esta area.");';
             echo 'history.back();';
             echo '</script>'; 
-        } else {
-            $this->patientsModel->deassignToArea($patientid);
-            $this->patientsModel->assignToArea($patientid, $areaid);
+        } else if($this->patientsModel->getById($patientid)->area != "NULL") {
+            echo '<script language="javascript">';
+            echo 'alert("El paciente ya se encuentra asignado a otra area.");';
+            echo 'history.back();';
+            echo '</script>'; 
+        } else{
+            $this->patientsModel->reassignArea( $areaid, $patientid);
             echo '<script language="javascript">';
             echo 'history.back()';
             echo '</script>'; 
@@ -91,9 +101,8 @@ class AreasController{
     // Desasigna un paciente del area
     public function deassignPatient(){
         $patientid = $_POST["patientid"];
-        $areaid = $_POST["areaid"];
 
-        $this->patientsModel->deassignToArea($patientid, $areaid);
+        $this->patientsModel->deassignToArea($patientid);
         echo '<script language="javascript">';
         echo 'history.back()';
         echo '</script>'; 

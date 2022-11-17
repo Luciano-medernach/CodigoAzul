@@ -4,6 +4,9 @@ include_once('views/UsersView.php');
 include_once('models/UsersModel.php');
 include_once('helpers/auth.helper.php');
 
+include_once('helpers/auth.helper.php');
+
+
 class UsersController{
 
     public function __construct(){
@@ -13,22 +16,29 @@ class UsersController{
 
     // Muestra el listado de usuarios
     public function showList(){
+        AuthHelper::checkLoggedIn();
+
         $users = $this->usersModel->getAll();
         $this->usersView->showList($users);
     }
 
     // Muestra el formulario de ingreso
     public function showSignin(){
+
         $this->usersView->showSignin();
     }
 
     // Muestra el formulario de adicion de usuario
     public function showAdd(){
+        AuthHelper::checkLoggedIn();
+
         $this->usersView->showAdd();
     }
 
     // Muestra el formulario de adicion de usuario
     public function showEdit(){
+        AuthHelper::checkLoggedIn();
+
         $id = $_GET["id"];
         $user = $this->usersModel->getById($id);
         $this->usersView->showEdit($user);
