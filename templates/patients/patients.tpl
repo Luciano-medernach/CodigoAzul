@@ -3,6 +3,8 @@
 <body class="bg-gradient-to-b from-cwhite to-clightblue  min-h-screen text-cdarkblue pb-20">
 
     {if $patients}
+        <input type="text" id="name-search" placeholder="Nombre" maxlength="50">
+        <input type="text" id="lastname-search" placeholder="Apellido" maxlength="50">
         <div class="max-w-xl grid gap-8 grid-cols-3 justify-items-center mx-auto mt-8">
         {foreach from=$patients item=patient }
             <div class=" flex flex-col box-with-shadow ">
@@ -12,8 +14,8 @@
                     <button class="text-cblue text-lg font-semibold">Ver más</button>
                     <input type="hidden" name="id" value="{$patient->id}"> 
                 </form>
-                <p class="text-md font-bold" >{$patient->lastname},</p>
-                <p class="text-base font-bold mb-2" >{$patient->name}</p>
+                <p class="lastname text-md font-bold" >{$patient->lastname},</p>
+                <p class="name text-base font-bold mb-2" >{$patient->name}</p>
                     
                 {if $admin}
                     <div class="flex justify-center  w-full mx-auto">
@@ -44,6 +46,8 @@
                 <a class=" w-full text-md text-cwhite " href="patient-add">Agregar paciente</a>
             </div>
         {/if}
-        </div>
+        </input>
     {/if}
+
+    <script src="./js/search.js"></script>
 </body>

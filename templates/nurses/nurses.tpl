@@ -5,6 +5,8 @@
         <a class="mt-4 block mx-auto p-2 w-1/3 text-xl text-cwhite  bg-cpink btn-white " href="nurse-add">Agregar Personal</a>
     {/if}
     {if $nurses}
+        <input type="text" id="name-search" placeholder="Nombre" maxlength="50">
+        <input type="text" id="lastname-search" placeholder="Apellido" maxlength="50">
         <div class=" grid gap-8 grid-cols-4 justify-items-center  mx-auto mt-8 mx-20">
         
         {foreach from=$nurses item=nurse }
@@ -15,8 +17,8 @@
                     <input type="hidden" name="id" value="{$nurse->id}">
                     <button class="text-cblue/50 text-lg font-semibold">Ver más</button>
                 </form>
-                <p class="text-xl font-bold" >{$nurse->lastname},</p>
-                <p class="text-lg font-bold mb-4" >{$nurse->name}</p>
+                <p class="lastname text-xl font-bold" >{$nurse->lastname},</p>
+                <p class="name text-lg font-bold mb-4" >{$nurse->name}</p>
                  
 
                 {if $admin}
@@ -39,4 +41,5 @@
     {/if}
     
     </div>
+    <script src="./js/search.js"></script>
 </body>

@@ -21,11 +21,12 @@ class PageController{
     // Muestra el inicio
     public function showHome(){
         $calls = $this->callsModel->getByType("urgents");
+        $averageTime = $this->callsModel->getAverageTime();
         $patients = $this->patientsModel->getLast();
         $nurses = $this->nursesModel->getLast();
         $areas = $this->areasModel->getLast();
         $users = $this->usersModel->getLast();
-        $this->pageView->showHome($calls, $patients, $nurses, $areas, $users);
+        $this->pageView->showHome($calls, $averageTime, $patients, $nurses, $areas, $users);
     }
 
     // Pantalla de error

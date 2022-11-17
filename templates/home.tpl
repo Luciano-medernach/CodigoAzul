@@ -17,8 +17,8 @@
         </div>
         <div onclick="window.location='areas';" class="cursor-pointer text-cdarkblue/80 box-with-shadow bg-clightblue w-full h-full uppercase flex flex-col justify-center">
             <h1 class="text-md">Tiempo estimado de respuesta </h1> 
-            <p class="text-5xl font-bold ">01:35</p>
-            <p class="text-md uppercase"> m i n u t o s </p>
+            <p class="text-5xl font-bold ">{$averageTime}</p>
+            <p class="text-md uppercase"> s e g u n d o s </p>
         </div>
 
         <div onclick="window.location='patients';" class="cursor-pointer box-with-shadow w-full h-full">    

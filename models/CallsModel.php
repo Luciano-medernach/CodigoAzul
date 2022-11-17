@@ -18,6 +18,13 @@ class CallsModel extends Model {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    // Retorna el tiempo promedio en que se atienden las llamadas
+    function getAverageTime(){
+        $query = $this-> getDb()->prepare('SELECT AVG(time) as averageTime FROM calls');
+        $query->execute();
+        return floor($query->fetch(PDO::FETCH_OBJ)->averageTime);
+    }   
+
     // Retorna la cantidad de llamadas por dia
     function getCountByDate(){
 

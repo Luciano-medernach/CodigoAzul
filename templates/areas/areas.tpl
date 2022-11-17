@@ -13,10 +13,12 @@
     <div class="max-w-2xl  justify-items-center  mx-auto mt-12 pb-12">
         
         {if $areas}
+            <input type="text" id="name-search" placeholder="Nombre" maxlength="50">
+
             <div class=" flex flex-col box-with-shadow w-full grid gap-6  grid-cols-2 "> 
             {foreach from=$areas item=area }
                 <div id="area-container">
-                    <p class="font-bold text-2xl pb-2" id="area-{$area->id}">{$area->name}</p>
+                    <p class="name font-bold text-2xl pb-2" id="area-{$area->id}">{$area->name}</p>
                     <form action="area" method="GET">
                         <input type="hidden" name="id" value="{$area->id}">
                         <button class="px-8 font-semibold bg-clightblue uppercase">Ver </button>
