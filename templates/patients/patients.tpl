@@ -9,7 +9,7 @@
                     
                 <form class="card-paciente " action="patient" method="GET">
                     <img class=" w-20  mx-auto" src="./images/paciente2.png" alt="Logo Codigo Azul">
-                    <button class=" text-lg font-semibold">Ver más</button>
+                    <button class="text-cblue text-lg font-semibold">Ver más</button>
                     <input type="hidden" name="id" value="{$patient->id}"> 
                 </form>
                 <p class="text-md font-bold" >{$patient->lastname},</p>
@@ -30,17 +30,18 @@
             </div>
         {/foreach}
         {if $admin}
-            <div class="mt-12 h-40 w-40 flex flex-col font-bold text-xl box-with-shadow justify-center items-center bg-cpink cursor-pointer">
+            <div class="mt-12 h-40 w-40 flex flex-col font-bold text-xl box-with-shadow justify-center items-center bg-cpink ">
                 <img class=" w-12 mx-auto" src="./images/paciente.png" alt="Logo Codigo Azul">
-                <a class=" w-full text-md text-cwhite " href="patient-add">Agregar paciente</a>
+                <a class=" w-full text-md text-cwhite cursor-pointer" href="patient-add">Agregar paciente</a>
             </div>
         {/if}
         </div>
     {else}
         <h3>Aun no tenemos pacientes registrados.</h3>
         {if $admin}
-            <div class="flex justify-center items-center w-full ">
-                <a class=" mx-4 w-full py-4 text-2xl text-cwhite bg-cpink btn-white " href="patient-add">Agregar paciente</a>
+            <div class="mt-12 h-40 w-40 flex flex-col font-bold text-xl box-with-shadow justify-center items-center bg-cpink cursor-pointer">
+                <img class=" w-12 mx-auto" src="./images/paciente.png" alt="Logo Codigo Azul">
+                <a class=" w-full text-md text-cwhite " href="patient-add">Agregar paciente</a>
             </div>
         {/if}
         </div>

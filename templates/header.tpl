@@ -8,7 +8,7 @@
     <link rel="icon" href="./images/logo2.png">
     <title> Codigo Azul </title>
 </head>
-<header class="flex justify-between items-center h-24 text-cdarkblue w-full mt-4 mb-8">
+<header class=" bg-cwhite flex justify-between items-center h-32 text-cdarkblue w-full pt-4 ">
     {if $id}
         <div class="btn-blue y-2 px-8" >  
             <img class="  w-12" src="./images/volver-flecha.png"  alt="Logo Codigo Azul">
