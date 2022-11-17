@@ -13,7 +13,7 @@
     <div class="max-w-2xl  justify-items-center  mx-auto mt-12 pb-12">
         
         {if $areas}
-            <div class=" flex flex-col box-with-shadow w-full grid gap-6  grid-cols-2 "> 
+            <div class=" flex flex-col box-with-shadow w-full grid gap-2  grid-cols-2 "> 
             {foreach from=$areas item=area }
                 <div id="area-container">
                     <p class="font-bold text-2xl pb-2" id="area-{$area->id}">{$area->name}</p>
@@ -24,11 +24,11 @@
                     <div id="sub-area-container" class="mt-2 flex justify-center  w-full mx-auto">
                     {if $admin}
                     
-                        <button id="button-{$area->id}" onclick="edit({$area->id})" class="text-base px-4 font-semibold text-cwhite bg-cpink  rounded-2xl">Editar</button>
+                        <button id="button-{$area->id}" onclick="edit({$area->id})" class="text-md font-semibold text-cwhite px-2 bg-clightgreen rounded-l-2xl">Editar</button>
     
                         <form action="db-area-delete" onsubmit="return window.confirm('¿Seguro que desea eliminar el area?')" method="POST">
                             <input type="hidden" name="id" value="{$area->id}">
-                            <button class="text-base px-4 font-semibold text-cwhite bg-cpink  rounded-2xl">Eliminar</button>
+                            <button class="text-md font-semibold text-cwhite bg-cpink px-2 rounded-r-2xl">Eliminar</button>
                 
                         </form>
                     {/if}
@@ -37,7 +37,7 @@
             {/foreach}
             </div>
         {else}
-            <h3>Aun no tenemos areas registradas.</h3>
+            <h3 class="text-lg font-semibold">Aun no tenemos areas registradas.</h3>
 
         {/if}
     </div>

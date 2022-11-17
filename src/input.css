@@ -59,4 +59,9 @@
     @apply mt-4  uppercase  px-6 cursor-pointer text-center;
     box-shadow: 4px 8px 8px 0px #0000001a, 2px 8px 8px 0px #0000001a inset;
   }
+
+  .msg-vacio{
+    @apply text-lg text-cwhite  font-semibold text-center;
+  }
+
 }

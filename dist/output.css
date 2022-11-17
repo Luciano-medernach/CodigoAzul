@@ -676,6 +676,15 @@ video {
   box-shadow: 4px 8px 8px 0px #0000001a, 2px 8px 8px 0px #0000001a inset;
 }
 
+.msg-vacio {
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(240 245 249 / var(--tw-text-opacity));
+}
+
 .visible {
   visibility: visible;
 }
@@ -717,19 +726,24 @@ video {
   margin-right: auto;
 }
 
-.mx-40 {
-  margin-left: 10rem;
-  margin-right: 10rem;
-}
-
 .mx-20 {
   margin-left: 5rem;
   margin-right: 5rem;
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .ml-6 {
@@ -782,6 +796,10 @@ video {
 
 .mt-6 {
   margin-top: 1.5rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
 }
 
 .block {
@@ -968,10 +986,6 @@ video {
   gap: 2rem;
 }
 
-.gap-6 {
-  gap: 1.5rem;
-}
-
 .gap-2 {
   gap: 0.5rem;
 }
@@ -980,8 +994,12 @@ video {
   gap: 1rem;
 }
 
-.rounded-2xl {
-  border-radius: 1rem;
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-l-2xl {
@@ -1047,6 +1065,10 @@ video {
   background-color: rgb(240 245 249 / 0.6);
 }
 
+.bg-cgray\/50 {
+  background-color: rgb(171 171 171 / 0.5);
+}
+
 .bg-cblue\/50 {
   background-color: rgb(13 93 161 / 0.5);
 }
@@ -1062,6 +1084,11 @@ video {
 
 .bg-cdarkblue\/60 {
   background-color: rgb(11 32 64 / 0.6);
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-b {
@@ -1224,14 +1251,14 @@ video {
   line-height: 1.75rem;
 }
 
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .text-sm {
@@ -1315,6 +1342,11 @@ video {
 
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.focus\:bg-cblue:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(13 93 161 / var(--tw-bg-opacity));
 }
 
 .focus\:font-semibold:focus {
