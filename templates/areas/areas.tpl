@@ -5,7 +5,7 @@
 
     {if $admin}
         <form class="mt-4 flex justify-center" action="db-area-add" method="POST">
-            <input class="px-8 py-2" type="text" name="title" placeholder="Nombre" maxlength="50" required>
+            <input class="px-8 py-2" type="text" name="name" placeholder="Nombre" maxlength="50" required>
             <button class="px-4 text-2xl font-semibold text-cwhite bg-cpink ">+</button>
         </form>
     {/if}
@@ -19,10 +19,13 @@
                     <p class="font-bold text-2xl pb-2" id="area-{$area->id}">{$area->name}</p>
                     <form action="area" method="GET">
                         <input type="hidden" name="id" value="{$area->id}">
-                        <button class="px-8 font-semibold bg-clightblue uppercase">Ver y editar </button>
+                        <button class="px-8 font-semibold bg-clightblue uppercase">Ver </button>
                     </form>
-                    <div class="mt-2 flex justify-center  w-full mx-auto">
+                    <div id="sub-area-container" class="mt-2 flex justify-center  w-full mx-auto">
                     {if $admin}
+                    
+                        <button id="button-{$area->id}" onclick="edit({$area->id})" class="text-base px-4 font-semibold text-cwhite bg-cpink  rounded-2xl">Editar</button>
+    
                         <form action="db-area-delete" onsubmit="return window.confirm('¿Seguro que desea eliminar el area?')" method="POST">
                             <input type="hidden" name="id" value="{$area->id}">
                             <button class="text-base px-4 font-semibold text-cwhite bg-cpink  rounded-2xl">Eliminar</button>

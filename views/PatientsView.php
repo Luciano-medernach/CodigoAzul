@@ -21,8 +21,9 @@
         }
 
         // Muestra el paciente
-        function show($patient, $nurses, $assignedNurses){
+        function show($patient, $areas, $nurses, $assignedNurses){
             $this->getSmarty()->assign('patient', $patient);
+            $this->getSmarty()->assign('areas', $areas);
             $this->getSmarty()->assign('nurses', $nurses);
             $this->getSmarty()->assign('assignedNurses', $assignedNurses);
             $this->getSmarty()->display('templates/patients/patient.tpl');

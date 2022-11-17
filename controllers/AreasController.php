@@ -64,6 +64,8 @@ class AreasController{
         }
 
         $this->areasModel->delete($id);
+        header("Location: " . $BASE_URL . "areas");
+
     }
 
     // Asigna un paciente al area
@@ -77,6 +79,7 @@ class AreasController{
             echo 'history.back();';
             echo '</script>'; 
         } else {
+            $this->patientsModel->deassignToArea($patientid);
             $this->patientsModel->assignToArea($patientid, $areaid);
             echo '<script language="javascript">';
             echo 'history.back()';

@@ -1,4 +1,5 @@
 const areaContainer = document.getElementById("area-container");
+const subContainer = document.getElementById("sub-area-container");
 
 function edit(id) {
   const originalButton = document.getElementById("button-" + id);
@@ -25,5 +26,5 @@ function edit(id) {
   form.append(nameInput, hiddenInput, button);
 
   areaContainer.replaceChild(form, nameP);
-  areaContainer.removeChild(originalButton);
+  subContainer.removeChild(originalButton);
 }
