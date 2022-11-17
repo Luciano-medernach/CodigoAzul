@@ -14,7 +14,9 @@
                     <button class="text-cblue text-lg font-semibold">Ver más</button>
                     <input type="hidden" name="id" value="{$patient->id}"> 
                 </form>
-                <p class="lastname text-md font-bold" >{$patient->lastname},</p>
+                {if $patient->lastname}
+                    <p class="lastname text-md font-bold" >{$patient->lastname},</p>
+                {/if}
                 <p class="name text-base font-bold mb-2" >{$patient->name}</p>
                     
                 {if $admin}

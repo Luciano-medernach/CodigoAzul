@@ -79,8 +79,26 @@ class PatientsController{
 
         $this->patientsModel->add($name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area);
 
+
+
         $patientid = $this->patientsModel->getLastInserted();
-        var_dump($patientid);
+
+        $this->nursesModel->assignToPatient($nurseid, $patientid);
+
+        header("Location: " . $BASE_URL . "patients");
+    }
+
+    // Agrega un paciente desconocido
+    public function addUnknown(){
+        $name = $_POST["name"];
+        $medical_history = $_POST["medical_history"];
+        $medicines = $_POST["medicines"];
+        $area = $_POST["area"];
+        $nurseid = $_POST["nurse"];
+
+        $this->patientsModel->addUnknown($name, $medical_history, $medicines, $area);
+
+        $patientid = $this->patientsModel->getLastInserted();
 
         $this->nursesModel->assignToPatient($nurseid, $patientid);
 

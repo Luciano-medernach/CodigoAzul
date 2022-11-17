@@ -121,6 +121,10 @@
             $patientsController->add();
             break;
 
+        case "db-patient-add-unknown":
+            $patientsController->addUnknown();
+            break;
+
         case "db-patient-edit":
             $patientsController->edit();
             break;
