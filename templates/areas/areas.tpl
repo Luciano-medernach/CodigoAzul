@@ -3,6 +3,17 @@
 <body class="bg-gradient-to-b from-cwhite to-clightblue  min-h-screen text-cdarkblue pb-20">
 <h3 class="pl-4 font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite"> Areas  </h3>
 
+    {if $areas}
+        <div class="bg-cdarkblue inline-flex w-full pl-40 mt-2 ">
+            <h2 class="bg-cblue w-48 text-md text-cwhite text-lg font-bold uppercase pl-2 pr-8 py-1 mr-8"> B u s c a d o r </h2>
+            <input class="mr-8 pr-4 inputs-form w-60 " type="text" id="name-search" placeholder="Nombre" maxlength="50">
+            <button class="cursor-pointer h-10 bg-cblue px-2">
+                <img class=" w-6  h-6 " src="./images/buscar.png" alt="Logo Codigo Azul">
+            </button>
+                
+        </div >
+    {/if}   
+
     {if $admin}
         <form class="mt-4 flex justify-center" action="db-area-add" method="POST">
             <input class="px-8 py-2" type="text" name="name" placeholder="Nombre" maxlength="50" required>
@@ -13,11 +24,9 @@
     <div class="max-w-2xl  justify-items-center  mx-auto mt-12 pb-12">
         
         {if $areas}
-            <input type="text" id="name-search" placeholder="Nombre" maxlength="50">
-
-            <div class=" flex flex-col box-with-shadow w-full grid gap-6  grid-cols-2 "> 
+            <div class=" flex flex-col  w-full grid gap-6  grid-cols-2 "> 
             {foreach from=$areas item=area }
-                <div id="area-container">
+                <div class="box-with-shadow" id="area-container">
                     <p class="name font-bold text-2xl pb-2" id="area-{$area->id}">{$area->name}</p>
                     <form action="area" method="GET">
                         <input type="hidden" name="id" value="{$area->id}">

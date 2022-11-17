@@ -11,8 +11,7 @@
                     <p>Urgencia en: {$call->area}</p>
                     <p>Fecha: {$call->date}</p>
                 {/foreach}
-            {else}
-                <p>Aun no hay ninguna urgencia.</p>
+           
             {/if}
         </div>
         <div class=" text-cdarkblue/80 box-with-shadow bg-clightblue w-full h-full uppercase flex flex-col justify-center">

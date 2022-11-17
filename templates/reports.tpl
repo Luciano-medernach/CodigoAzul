@@ -1,6 +1,6 @@
 {include "header.tpl"}
 
-<body class=" bg-gradient-to-b from-cwhite to-cpink/50 min-h-screen ">
+<body class=" bg-gradient-to-b from-cwhite to-cdarkblue min-h-screen ">
 
 <h3 class="mt-4 pl-4 font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite mb-8"> Estadisticas  </h3>
 
@@ -13,7 +13,7 @@
         <option value="origin">Origen</option>
     </select>
 
-    <select class="text-cwhite text-xl bg-cpink border-none  h-10 p-2 " name="filter" id="type-filter">
+    <select class="text-cwhite text-xl bg-cblue border-none  h-10 p-2 " name="filter" id="type-filter">
     <option value="none" selected>- Seleccione tipo de grafico -</option>
         <option value="pie">Pastel</option>
         <option value="column">Columnas</option>

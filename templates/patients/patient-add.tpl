@@ -1,10 +1,10 @@
 {include "../header.tpl"}	
 
 <body class="bg-gradient-to-b from-cwhite to-clightblue  min-h-screen text-cdarkblue pb-20">
-    <h3 class="pl-4 font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite"> Ingresar paciente  </h3>
-    <div id="unknown-container">
-        <label>¿No conoce los datos de este paciente?</label>
-        <input type="checkbox" id="unknown-check" />
+    <h3 class="pl-4 font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite mb-4"> Ingresar paciente  </h3>
+    <div id="unknown-container ">
+        <label class=" w-full mx-4 bg-clightgreen py-2 px-4 mr-4 text-cdarkgray text-lg font-semibold">¿No conoce los datos de este paciente?</label>
+        <input class="w-4 h-4 py-2"  type="checkbox" id="unknown-check" />
     </div>
     <form id="add-form" class="text-base box-with-shadow  w-2/3 mx-auto  p-4 mt-8 max-w-xl "  action="db-patient-add" method="POST">
     <div class="grid grid-cols-2 gap-2 mx-4  justify-items-center  pb-2">
