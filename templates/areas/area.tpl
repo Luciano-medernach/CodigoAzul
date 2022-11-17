@@ -68,13 +68,12 @@
                     
                     
                     <form action="patient" method="GET">
-                        <input type="hidden" name="id" value="{$patient->patientid}">
+                        <input type="hidden" name="id" value="{$patient->id}">
                         <button class=" block mx-auto  px-2  bg-cwhite  btn-cwhite">{$patient->lastname}, {$patient->name}</button>
                     </form>
                     {if $admin}
                     <form action="db-area-deassign-patient" method="POST">
-                        <input type="hidden" name="patientid" value="{$patient->patientid}">
-                        <input type="hidden" name="areaid" value="{$area->id}">
+                        <input type="hidden" name="patientid" value="{$patient->id}">
                         <button class="block mx-auto bg-cwhite/60 text-lg px-2 m-0 btn"> Desasignar</button>
                     </form>
                     

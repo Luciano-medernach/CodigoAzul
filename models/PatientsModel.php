@@ -54,29 +54,23 @@ class PatientsModel extends Model {
 
     // Obtiene los pacientes asignados a un area determinada
     function getAssignedToArea($id){
-        $query = $this-> getDb()->prepare('SELECT * FROM patients LEFT JOIN patient_area ON patients.id = patient_area.patientid WHERE patient_area.areaid = ?');
+        $query = $this-> getDb()->prepare('SELECT * FROM patients WHERE area = ?');
         $query->execute([$id]);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
     // Asigna un paciente a un area
-    function assignToArea($patientid, $areaid){
-        $query = $this-> getDb()->prepare('INSERT patient_area (patientid, areaid) VALUES (?, ?)');
-        $query->execute([$patientid, $areaid]);
+    function reassignArea($areaid, $patientid){
+        $query = $this-> getDb()->prepare('UPDATE patients SET area = ? WHERE id = ?');
+        $query->execute([ $areaid, $patientid]);
     }
 
-    // Desasigna un paciente de un area
+    // Desasigna un paciente de su area
     function deassignToArea($patientid){
-        $query = $this-> getDb()->prepare('DELETE FROM patient_area WHERE patientid = ?');
+        $query = $this-> getDb()->prepare('UPDATE patients SET area = NULL WHERE id = ?');
         $query->execute([$patientid]);
     }
 
-    // Verifica que el area no esta ya asignada
-    function checkAssignedArea($patientid, $areaid){
-        $query = $this-> getDb()->prepare('SELECT * FROM patient_area WHERE patientid = ? AND areaid = ?');
-        $query->execute([$patientid, $areaid]);
-        return $query->rowCount();
-    }
 
 }
 ?>

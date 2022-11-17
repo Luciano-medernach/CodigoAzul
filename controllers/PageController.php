@@ -7,6 +7,8 @@ include_once('models/AreasModel.php');
 include_once('models/NursesModel.php');
 include_once('models/UsersModel.php');
 
+include_once('helpers/auth.helper.php');
+
 class PageController{
 
     public function __construct(){
@@ -20,6 +22,7 @@ class PageController{
 
     // Muestra el inicio
     public function showHome(){
+        AuthHelper::checkLoggedIn();
         $calls = $this->callsModel->getByType("urgents");
         $averageTime = $this->callsModel->getAverageTime();
         $patients = $this->patientsModel->getLast();
@@ -36,6 +39,8 @@ class PageController{
 
     // Muestra los reportes
     public function showReports(){
+        AuthHelper::checkLoggedIn();
+
         $calls = $this->callsModel->getAll();
         $areas = $this->areasModel->getAll();
 

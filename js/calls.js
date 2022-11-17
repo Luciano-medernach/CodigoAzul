@@ -54,23 +54,15 @@ function updateCalls() {
           if (!notUpload) {
             if (element.type == "urgent") {
               if (element.attended) {
-                if (!containerUA.contains(call)) {
-                  containerUA.insertBefore(call, containerUA.firstChild);
-                }
+                containerUA.insertBefore(call, containerUA.firstChild);
               } else {
-                if (!containerUNA.contains(call)) {
-                  containerUNA.insertBefore(call, containerUNA.firstChild);
-                }
+                containerUNA.insertBefore(call, containerUNA.firstChild);
               }
             } else {
               if (element.attended) {
-                if (!containerNA.contains(call)) {
-                  containerNA.insertBefore(call, containerNA.firstChild);
-                }
+                containerNA.insertBefore(call, containerNA.firstChild);
               } else {
-                if (!containerNNA.contains(call)) {
-                  containerNNA.insertBefore(call, containerNNA.firstChild);
-                }
+                containerNNA.insertBefore(call, containerNNA.firstChild);
               }
             }
           }

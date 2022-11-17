@@ -25,7 +25,7 @@
         public static function checkLoggedIn() {
             self::start();
             if (!isset($_SESSION['id'])){
-                header('Location: ' . BASE_URL . "login");
+                header('Location: ' . BASE_URL . "signin");
                 die;
             }
         }
