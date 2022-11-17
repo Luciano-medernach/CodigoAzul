@@ -44,12 +44,48 @@ class PageController{
 
     // Ajax reportes
     public function createReport(){
-        $calls = $this->callsModel->getCountByDate();
+        $filter = $_GET["filter"];
+
         $data = array();
-        
-        foreach ($calls as $call) {
-            array_push($data, array("y" => $call->count, "label" => $call->date));
+
+        switch ($filter) {
+            case 'area':
+                $calls = $this->callsModel->getCountByArea();
+                
+                foreach ($calls as $call) {
+                    array_push($data, array("y" => $call->count, "label" => $call->name));
+                }
+                break;
+            case 'day':
+                $calls = $this->callsModel->getCountByDate();
+                
+                foreach ($calls as $call) {
+                    array_push($data, array("y" => $call->count, "label" => $call->date));
+                }
+                break;
+            case 'hour':
+                $calls = $this->callsModel->getCountByHour();
+                
+                foreach ($calls as $call) {
+                    array_push($data, array("y" => $call->count, "label" => $call->hour));
+                }
+                break;
+            case 'origin':
+                $calls = $this->callsModel->getCountByOrigin();
+                
+                foreach ($calls as $call) {
+                    array_push($data, array("y" => $call->count, "label" => $call->origin));
+                }
+                break;
+
+            default:
+                # code...
+                break;
         }
+
+        
+        
+        
 
         echo json_encode($data, JSON_NUMERIC_CHECK);
 
