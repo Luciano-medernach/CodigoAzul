@@ -2,73 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-  @layer components {
-
-    .title-impact {
-      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-      letter-spacing: 0.1em;
-    }
-
-    .box-with-shadow {
-        @apply bg-cwhite   text-cdarkgray text-center rounded-xl p-4;
-        box-shadow: 4px 8px 8px 0px #0000001A, 2px 8px 8px 0px #0000001A inset;
-
-    }
-    
-
-    .box-with-shadow h2{
-        @apply  font-bold text-2xl ;
-
-    }
-
-    
-    .btn-blue {
-        @apply bg-cblue text-cwhite font-semibold text-xl cursor-pointer text-center ;
-        box-shadow: 4px 8px 8px 0px #0000001A, 2px 8px 8px 0px #0000001A inset;
-
-    }
-
-    .card-paciente{
-      @apply bg-clightblue  m-2 p-2 text-cblue/10 cursor-pointer hover:text-cblue;
-    }
-    
-    .card-paciente:hover {
-      box-shadow: 2px -1px 12px 8px rgba(218,236,251,1);
-      -webkit-box-shadow: 2px -1px 12px 8px rgba(218,236,251,1);
-      -moz-box-shadow: 2px -1px 12px 8px rgba(218,236,251,1);
-    }
-    
-    .card-nurse{
-      @apply bg-clightgreen m-2  text-clightgreen cursor-pointer hover:text-cdarkblue;
-    }
-    
-    .card-nurse:hover {
-
-      box-shadow: 2px -1px 12px 8px rgb(121, 189, 165);
-      -webkit-box-shadow: 2px -1px 12px 8px rgb(121, 189, 165);
-      -moz-box-shadow: 2px -1px 12px 8px rgb(121, 189, 165);
-    }
-
-    .inputs-form {
-      @apply bg-transparent w-2/3 h-10  border-none appearance-none  focus:bg-transparent focus:text-xl focus:font-semibold focus:outline-none;
-    }  
-    
-    .select-form {
-      @apply border-none bg-clightgreen/50 w-2/3 h-10 p-2 pr-4 leading-tight focus:bg-transparent focus:text-lg focus:font-semibold;
-    }
-
-
-    .btn-white {
-      @apply bg-cwhite text-cdarkblue px-6 uppercase font-semibold  cursor-pointer text-center;
-        box-shadow: 4px 8px 8px 0px #0000001A, 2px 8px 8px 0px #0000001A inset;
-
-    }
-
-    .btn {
-      @apply  mt-4  uppercase  px-6 cursor-pointer text-center;
-        box-shadow: 4px 8px 8px 0px #0000001A, 2px 8px 8px 0px #0000001A inset;
-
-    }
-
+@layer components {
+  .title-impact {
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    letter-spacing: 0.1em;
   }
-  
+
+  .box-with-shadow {
+    @apply bg-cwhite   text-cdarkgray text-center rounded-xl p-4;
+    box-shadow: 4px 8px 8px 0px #0000001a, 2px 8px 8px 0px #0000001a inset;
+  }
+
+  .box-with-shadow h2 {
+    @apply font-bold text-2xl;
+  }
+
+  .btn-blue {
+    @apply bg-cblue text-cwhite font-semibold text-xl cursor-pointer text-center;
+    box-shadow: 4px 8px 8px 0px #0000001a, 2px 8px 8px 0px #0000001a inset;
+  }
+
+  .card-paciente {
+    @apply bg-clightblue  m-2 p-2 text-cblue/10 cursor-pointer hover:text-cblue;
+  }
+
+  .card-paciente:hover {
+    box-shadow: 2px -1px 12px 8px rgba(218, 236, 251, 1);
+    -webkit-box-shadow: 2px -1px 12px 8px rgba(218, 236, 251, 1);
+    -moz-box-shadow: 2px -1px 12px 8px rgba(218, 236, 251, 1);
+  }
+
+  .card-nurse {
+    @apply bg-clightgreen m-2  text-clightgreen cursor-pointer hover:text-cdarkblue;
+  }
+
+  .card-nurse:hover {
+    box-shadow: 2px -1px 12px 8px rgb(121, 189, 165);
+    -webkit-box-shadow: 2px -1px 12px 8px rgb(121, 189, 165);
+    -moz-box-shadow: 2px -1px 12px 8px rgb(121, 189, 165);
+  }
+
+  .inputs-form {
+    @apply bg-transparent w-2/3 h-10  border-none appearance-none  focus:bg-transparent focus:text-xl focus:font-semibold focus:outline-none;
+  }
+
+  .select-form {
+    @apply border-none bg-clightgreen/50 w-2/3 h-10 p-2 pr-4 leading-tight focus:bg-transparent focus:text-lg focus:font-semibold;
+  }
+
+  .btn-white {
+    @apply bg-cwhite text-cdarkblue px-6 uppercase font-semibold  cursor-pointer text-center;
+    box-shadow: 4px 8px 8px 0px #0000001a, 2px 8px 8px 0px #0000001a inset;
+  }
+
+  .btn {
+    @apply mt-4  uppercase  px-6 cursor-pointer text-center;
+    box-shadow: 4px 8px 8px 0px #0000001a, 2px 8px 8px 0px #0000001a inset;
+  }
+}

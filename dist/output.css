@@ -548,7 +548,7 @@ video {
 }
 
 .title-impact {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: 0.1em;
 }
 
@@ -560,7 +560,7 @@ video {
   text-align: center;
   --tw-text-opacity: 1;
   color: rgb(92 92 92 / var(--tw-text-opacity));
-  box-shadow: 4px 8px 8px 0px #0000001A, 2px 8px 8px 0px #0000001A inset;
+  box-shadow: 4px 8px 8px 0px #0000001a, 2px 8px 8px 0px #0000001a inset;
 }
 
 .box-with-shadow h2 {
@@ -579,7 +579,7 @@ video {
   font-weight: 600;
   --tw-text-opacity: 1;
   color: rgb(240 245 249 / var(--tw-text-opacity));
-  box-shadow: 4px 8px 8px 0px #0000001A, 2px 8px 8px 0px #0000001A inset;
+  box-shadow: 4px 8px 8px 0px #0000001a, 2px 8px 8px 0px #0000001a inset;
 }
 
 .card-paciente {
@@ -594,9 +594,9 @@ video {
 .card-paciente:hover {
   --tw-text-opacity: 1;
   color: rgb(13 93 161 / var(--tw-text-opacity));
-  box-shadow: 2px -1px 12px 8px rgba(218,236,251,1);
-  -webkit-box-shadow: 2px -1px 12px 8px rgba(218,236,251,1);
-  -moz-box-shadow: 2px -1px 12px 8px rgba(218,236,251,1);
+  box-shadow: 2px -1px 12px 8px rgba(218, 236, 251, 1);
+  -webkit-box-shadow: 2px -1px 12px 8px rgba(218, 236, 251, 1);
+  -moz-box-shadow: 2px -1px 12px 8px rgba(218, 236, 251, 1);
 }
 
 .card-nurse {
@@ -663,7 +663,7 @@ video {
   text-transform: uppercase;
   --tw-text-opacity: 1;
   color: rgb(11 32 64 / var(--tw-text-opacity));
-  box-shadow: 4px 8px 8px 0px #0000001A, 2px 8px 8px 0px #0000001A inset;
+  box-shadow: 4px 8px 8px 0px #0000001a, 2px 8px 8px 0px #0000001a inset;
 }
 
 .btn {
@@ -673,7 +673,7 @@ video {
   padding-right: 1.5rem;
   text-align: center;
   text-transform: uppercase;
-  box-shadow: 4px 8px 8px 0px #0000001A, 2px 8px 8px 0px #0000001A inset;
+  box-shadow: 4px 8px 8px 0px #0000001a, 2px 8px 8px 0px #0000001a inset;
 }
 
 .visible {
@@ -840,6 +840,10 @@ video {
   min-height: 100vh;
 }
 
+.w-1 {
+  width: 0.25rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -894,10 +898,6 @@ video {
 
 .w-96 {
   width: 24rem;
-}
-
-.w-1 {
-  width: 0.25rem;
 }
 
 .max-w-3xl {
@@ -1096,16 +1096,16 @@ video {
   --tw-gradient-to: #0b2040;
 }
 
+.p-1 {
+  padding: 0.25rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
 
 .p-4 {
   padding: 1rem;
-}
-
-.p-1 {
-  padding: 0.25rem;
 }
 
 .px-8 {
@@ -1330,4 +1330,3 @@ video {
     padding-right: 2rem;
   }
 }
-  

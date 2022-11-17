@@ -24,9 +24,10 @@ class PatientsController{
     public function show(){
         $id = $_GET["id"];
         $patient = $this->patientsModel->getById($id);
+        $areas = $this->areasModel->getAll();
         $nurses = $this->nursesModel->getAll();
         $assignedNurses = $this->nursesModel->getAssignedToPatient($id);
-        $this->patientsView->show($patient, $nurses, $assignedNurses);
+        $this->patientsView->show($patient, $areas, $nurses, $assignedNurses);
     }
 
 

@@ -66,9 +66,9 @@ class PatientsModel extends Model {
     }
 
     // Desasigna un paciente de un area
-    function deassignToArea($patientid, $areaid){
-        $query = $this-> getDb()->prepare('DELETE FROM patient_area WHERE patientid = ? AND areaid = ?');
-        $query->execute([$patientid, $areaid]);
+    function deassignToArea($patientid){
+        $query = $this-> getDb()->prepare('DELETE FROM patient_area WHERE patientid = ?');
+        $query->execute([$patientid]);
     }
 
     // Verifica que el area no esta ya asignada

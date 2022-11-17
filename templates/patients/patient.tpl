@@ -5,21 +5,36 @@
     <div class=" py-4 px-4  grid  grid-cols-2  grid-rows-2 gap-4 items-center justify-content-center pb-20">
 
         <div class=" grid w-full  row-start-1 row-end-3 justify-center">
-
-            <p class="pl-2 font-semibold text-cwhite uppercase">DNI</p>
-            <p class="pl-8 text-cblue bg-clightblue w-60">{$patient->dni}</p>
-            <p class="pl-2 font-semibold text-cwhite uppercase">Edad</p>
-            <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</Edad:>
-            <p class="pl-2 font-semibold text-cwhite uppercase">Direccion</p>
-            <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->address}</>
-            <p class="pl-2 font-semibold text-cwhite uppercase">Telefono</p>
-            <p class="pl-8 text-cblue bg-clightblue w-60">  {$patient->phone}</>
-            <p class="pl-2 font-semibold text-cwhite uppercase">Telefono de un familiar</p>
-            <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->family_phone}</>
-            <p class="pl-2 font-semibold text-cwhite uppercase">Peso</p>
-            <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->weight}</>
-            <p class="pl-2 font-semibold text-cwhite uppercase">Altura</p>
-            <p class="pl-8 text-cblue bg-clightblue w-60"> Altura {$patient->height}</>
+            {if $patient->dni}
+                <p class="pl-2 font-semibold text-cwhite uppercase">DNI</p>
+                <p class="pl-8 text-cblue bg-clightblue w-60">{$patient->dni}</p>
+            {/if}
+            {if $patient->age}
+                <p class="pl-2 font-semibold text-cwhite uppercase">Edad</p>
+                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</Edad:>
+            {/if}
+            {if $patient->address}
+                <p class="pl-2 font-semibold text-cwhite uppercase">Direccion</p>
+                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</Edad:>
+            {/if}
+            {if $patient->phone}
+                <p class="pl-2 font-semibold text-cwhite uppercase">Telefono</p>
+                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</Edad:>
+            {/if}
+            {if $patient->family_phone}
+                <p class="pl-2 font-semibold text-cwhite uppercase">Telefono de un familiar</p>
+                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</Edad:>
+            {/if}
+            {if $patient->weight}
+                <p class="pl-2 font-semibold text-cwhite uppercase">Peso</p>
+                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</Edad:>
+            {/if}
+            {if $patient->height}
+                <p class="pl-2 font-semibold text-cwhite uppercase">Altura</p>
+                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</Edad:>
+            {/if}
+            
+            
             <p class="pl-2 font-semibold text-cwhite uppercase bg-clightgreen w-60 mt-2">Antecedentes medicos</p>
             <p class="pl-8 text-cblue bg-clightblue w-60 h-10"> {$patient->medical_history}</>
             <p class="pl-2 font-semibold text-cwhite uppercase bg-clightgreen w-60 mt-2">Medicamentos que toma </p>
@@ -32,7 +47,12 @@
         
         <p>Area asignada: {$patient->area}</p>    
         {if $admin}
-                <form action="patient-assign-area" method="GET">
+                <form action="patient-assign-area" method="POST">
+                    <select class="w-2/3  bg-clightblue px-1 mb-4" name="areaid" required>
+                        {foreach from=$areas item=area}
+                            <option value="{$area->id}">{$area->name}</option>
+                        {/foreach}
+                    </select>
                     <input type="hidden" name="id" value="{$patient->id}">
                     <button class="w-2/3 cursor-pointer bg-cblue text-cwhite px-8">Reasignar area</button>
                 </form>
