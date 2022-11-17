@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2022 a las 22:27:11
+-- Tiempo de generación: 17-11-2022 a las 20:15:05
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -37,7 +37,27 @@ CREATE TABLE `areas` (
 --
 
 INSERT INTO `areas` (`id`, `name`) VALUES
-(2, 'Sector 11');
+(2, 'Sector 11'),
+(3, 'Quirofano 2');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `area_origin`
+--
+
+CREATE TABLE `area_origin` (
+  `id` int(11) NOT NULL,
+  `areaid` int(11) NOT NULL,
+  `origin` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `area_origin`
+--
+
+INSERT INTO `area_origin` (`id`, `areaid`, `origin`) VALUES
+(2, 2, 'Baño');
 
 -- --------------------------------------------------------
 
@@ -49,11 +69,26 @@ CREATE TABLE `calls` (
   `id` int(11) NOT NULL,
   `type` varchar(50) NOT NULL,
   `area` int(11) NOT NULL,
-  `origin` int(11) NOT NULL,
+  `origin` varchar(50) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
+  `hour` time NOT NULL DEFAULT current_timestamp(),
   `attended` tinyint(1) NOT NULL DEFAULT 0,
-  `time` int(11) NOT NULL
+  `time` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `calls`
+--
+
+INSERT INTO `calls` (`id`, `type`, `area`, `origin`, `date`, `hour`, `attended`, `time`) VALUES
+(1, 'urgente', 2, 'Baño', '2022-11-15', '22:17:26', 1, 140),
+(2, 'urgente', 2, 'Baño', '2022-11-15', '22:17:26', 1, 187),
+(3, 'normal', 2, 'Cama', '2022-11-15', '22:01:15', 1, 286),
+(4, 'urgente', 3, 'Camilla', '2022-11-15', '22:17:20', 1, 54),
+(5, 'urgente', 3, 'Camilla', '2022-11-15', '22:17:26', 1, 32),
+(6, 'normal', 3, 'Camilla', '2022-11-15', '22:17:26', 1, 124),
+(7, 'normal', 3, 'Camilla', '2022-11-16', '22:17:26', 1, 124),
+(8, 'urgente', 2, 'baño', '2022-11-16', '17:34:24', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -91,7 +126,7 @@ CREATE TABLE `nurse_area` (
 --
 
 INSERT INTO `nurse_area` (`id`, `nurseid`, `areaid`) VALUES
-(8, 3, 2);
+(12, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -110,8 +145,8 @@ CREATE TABLE `nurse_patient` (
 --
 
 INSERT INTO `nurse_patient` (`id`, `nurseid`, `patientid`) VALUES
-(12, 3, 5),
-(14, 3, 2);
+(15, 3, 2),
+(16, 3, 5);
 
 -- --------------------------------------------------------
 
@@ -141,7 +176,7 @@ CREATE TABLE `patients` (
 
 INSERT INTO `patients` (`id`, `name`, `lastname`, `dni`, `age`, `address`, `phone`, `family_phone`, `height`, `weight`, `medical_history`, `medicines`, `area`) VALUES
 (2, 'Julio', 'Martinez', 0, 46, '', '', '', 1.67, 44, '', '', 2),
-(5, 'Ivanaw', 'Medernach', 174437, 51, '64-156', '2262141510', '2262140631', 1.84, 70, '', '', 2);
+(5, 'Ivana', 'Medernach', 174437, 51, '64-156', '2262141510', '2262140631', 1.84, 70, '', '', 2);
 
 -- --------------------------------------------------------
 
@@ -195,11 +230,18 @@ ALTER TABLE `areas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `area_origin`
+--
+ALTER TABLE `area_origin`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `areaid` (`areaid`);
+
+--
 -- Indices de la tabla `calls`
 --
 ALTER TABLE `calls`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `origin` (`origin`);
+  ADD KEY `calls_ibfk_1` (`area`);
 
 --
 -- Indices de la tabla `nurses`
@@ -254,13 +296,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `areas`
 --
 ALTER TABLE `areas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `area_origin`
+--
+ALTER TABLE `area_origin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `calls`
 --
 ALTER TABLE `calls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=331;
 
 --
 -- AUTO_INCREMENT de la tabla `nurses`
@@ -272,13 +320,13 @@ ALTER TABLE `nurses`
 -- AUTO_INCREMENT de la tabla `nurse_area`
 --
 ALTER TABLE `nurse_area`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `nurse_patient`
 --
 ALTER TABLE `nurse_patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `patients`
@@ -290,7 +338,7 @@ ALTER TABLE `patients`
 -- AUTO_INCREMENT de la tabla `patient_area`
 --
 ALTER TABLE `patient_area`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -303,10 +351,16 @@ ALTER TABLE `users`
 --
 
 --
+-- Filtros para la tabla `area_origin`
+--
+ALTER TABLE `area_origin`
+  ADD CONSTRAINT `area_origin_ibfk_1` FOREIGN KEY (`areaid`) REFERENCES `areas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `calls`
 --
 ALTER TABLE `calls`
-  ADD CONSTRAINT `calls_ibfk_1` FOREIGN KEY (`origin`) REFERENCES `areas` (`id`);
+  ADD CONSTRAINT `calls_ibfk_1` FOREIGN KEY (`area`) REFERENCES `areas` (`id`);
 
 --
 -- Filtros para la tabla `nurse_area`
