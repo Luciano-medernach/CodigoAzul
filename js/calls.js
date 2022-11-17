@@ -40,7 +40,8 @@ function updateCalls() {
             attended +
             " " +
             element.time;
-          call.classList.add("js-generated");
+
+          call.textContent = call.textContent.toUpperCase();
 
           let nodes = document.getElementsByClassName("js-generated");
 
@@ -51,20 +52,20 @@ function updateCalls() {
           });
 
           if (!notUpload) {
-            if (element.type == "urgent") {
+            if (element.type == "urgente") {
               if (element.attended) {
-                call.classList.add(" box-with-shadow my-2 w-full");
+                call.className = "js-generated box-with-shadow my-2 w-full";
                 containerUA.insertBefore(call, containerUA.firstChild);
               } else {
-                call.classList.add(" box-with-shadow my-2 w-full");
+                call.className = "js-generated box-with-shadow my-2 w-full";
                 containerUNA.insertBefore(call, containerUNA.firstChild);
               }
             } else {
               if (element.attended) {
-                call.classList.add(" box-with-shadow my-2 w-full");
+                call.className = "js-generated box-with-shadow my-2 w-full";
                 containerNA.insertBefore(call, containerNA.firstChild);
               } else {
-                call.classList.add(" box-with-shadow my-2 w-full");
+                call.className = "js-generated box-with-shadow my-2 w-full";
                 containerNNA.insertBefore(call, containerNNA.firstChild);
               }
             }
