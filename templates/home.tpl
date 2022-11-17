@@ -15,7 +15,7 @@
                 <p>Aun no hay ninguna urgencia.</p>
             {/if}
         </div>
-        <div onclick="window.location='areas';" class="cursor-pointer text-cdarkblue/80 box-with-shadow bg-clightblue w-full h-full uppercase flex flex-col justify-center">
+        <div class=" text-cdarkblue/80 box-with-shadow bg-clightblue w-full h-full uppercase flex flex-col justify-center">
             <h1 class="text-md">Tiempo estimado de respuesta </h1> 
             <p class="text-5xl font-bold ">{$averageTime}</p>
             <p class="text-md uppercase"> s e g u n d o s </p>

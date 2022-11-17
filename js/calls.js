@@ -69,18 +69,18 @@ function updateCalls() {
           if (!notUpload) {
             if (element.type == "urgente") {
               if (element.attended) {
-                call.className = "js-generated box-with-shadow my-2 w-full";
+                call.className = "js-generated font-semibold box-with-shadow bg-cpink/50 my-2 w-full italic";
                 containerUA.insertBefore(call, containerUA.firstChild);
               } else {
-                call.className = "js-generated box-with-shadow my-2 w-full";
+                call.className = "js-generated text-cwhite font-bold text-lg box-with-shadow my-2 w-full bg-cpink";
                 containerUNA.insertBefore(call, containerUNA.firstChild);
               }
             } else {
               if (element.attended) {
-                call.className = "js-generated box-with-shadow my-2 w-full";
+                call.className = "js-generated font-semibold box-with-shadow x my-2 bg-cwhite/50 w-lg italic";
                 containerNA.insertBefore(call, containerNA.firstChild);
               } else {
-                call.className = "js-generated box-with-shadow my-2 w-full";
+                call.className = "js-generated text-cwhite font-bold text-lg box-with-shadow bg-clightgreen my-2 mr-2 w-lg";
                 containerNNA.insertBefore(call, containerNNA.firstChild);
               }
             }
