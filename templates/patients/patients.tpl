@@ -3,9 +3,9 @@
 <body class="bg-gradient-to-b from-cwhite to-clightblue  min-h-screen text-cdarkblue pb-20">
 
     {if $patients}
-        <div class="max-w-xl grid gap-6 grid-cols-3   justify-items-center  mx-auto mt-12">
+        <div class="max-w-xl grid gap-8 grid-cols-3 justify-items-center mx-auto mt-8">
         {foreach from=$patients item=patient }
-            <div class=" flex flex-col box-with-shadow w-xl">
+            <div class=" flex flex-col box-with-shadow ">
                     
                 <form class="card-paciente " action="patient" method="GET">
                     <img class=" w-20  mx-auto" src="./images/paciente2.png" alt="Logo Codigo Azul">

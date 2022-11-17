@@ -1,7 +1,9 @@
 {include "../header.tpl"}
 
-<body>
-    <form class="flex flex-col items-center text-lg  w-1/2 mx-auto box-with-shadow p-4 mt-12"  action="db-nurse-add" method="POST">
+
+<body class=" bg-gradient-to-b from-cwhite to-clightblue min-h-screen ">
+   
+    <form class="mt-32 flex flex-col  items-center text-lg h-64 w-1/2 mx-auto box-with-shadow p-4 "  action="db-nurse-add" method="POST">
         <h1 class="py-4 text-3xl font-bold text-cblue">Ingresar un enfermero/medico</h1>
         <input class="py-4 text-cdarkgray inputs-form"  type="text" name="name" placeholder="Nombre" maxlength="50" required />
         <input class="py-4 text-cdarkgray inputs-form"  type="text" name="lastname" placeholder="Apellido" maxlength="50" required />

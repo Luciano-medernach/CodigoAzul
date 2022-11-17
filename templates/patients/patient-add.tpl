@@ -1,7 +1,7 @@
 {include "../header.tpl"}	
 
 <body class="bg-gradient-to-b from-cwhite to-clightblue  min-h-screen text-cdarkblue pb-20">
-    <h3 class="font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite"> Ingresar paciente  </h3>
+    <h3 class="pl-4 font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite"> Ingresar paciente  </h3>
      
     <form class="text-base box-with-shadow  w-2/3 mx-auto  p-4 mt-8 max-w-xl "  action="db-patient-edit" method="POST">
     <div class="grid grid-cols-2 gap-2 mx-4  justify-items-center  pb-2">
@@ -41,8 +41,7 @@
               
         </div>
         
-        
-        <button class="block mx-auto mt-4 mb-4 px-4 py-1 btn-blue">Guardar cambios</button>
+        <button class="block mx-auto mt-4 mb-2 px-4 py-1 btn-blue">Guardar cambios</button>
 </form> 
         
 </body>
