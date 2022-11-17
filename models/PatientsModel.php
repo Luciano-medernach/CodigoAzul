@@ -38,6 +38,12 @@ class PatientsModel extends Model {
         $query->execute([$name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area]);
     }
 
+    // Agregar un paciente desconocido
+    function addUnknown($name, $medical_history, $medicines, $area){
+        $query = $this-> getDb()->prepare('INSERT INTO patients (name, medical_history, medicines, area) VALUES ( ?, ?, ?, ?)');
+        $query->execute([$name, $medical_history, $medicines, $area]);
+    }
+
     // Edita un paciente
     function edit($id, $name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area){
         $query = $this-> getDb()->prepare('UPDATE patients SET name = ?, lastname = ?, dni = ?, age = ?, address = ?, phone = ?, family_phone = ?, height = ?,
