@@ -1,9 +1,9 @@
 {include "header.tpl"}
 
 <body class=" bg-gradient-to-b from-cwhite to-clightblue min-h-screen ">
-    <div class="w-1/2 grid gap-8 grid-cols-3 mt-10 max-w-3xl mx-auto pb-20">
+    <div class=" lg:w-1/2 grid gap-4 md:gap-8 lg:grid-cols-3 mt-10  mx-4  lg:mx-auto pb-20">
 
-        <form action="calls" method="GET" class="cursor-pointer col-start-1 col-end-3 bg-cpink/25 box-with-shadow w-full h-full ">
+        <form action="calls" method="GET" class=" cursor-pointer col-start-1 col-end-3 bg-cpink/25 box-with-shadow w-full h-full ">
             <button>
                 <img class=" w-16 mx-auto" src="./images/latido-del-corazon.png" alt="Logo Codigo Azul">
                 <h2>Llamadas</h2>
@@ -14,7 +14,7 @@
         <div class=" text-cdarkblue/80 box-with-shadow bg-clightblue w-full h-full uppercase flex flex-col justify-center">
             <h1 class="text-md">Tiempo estimado de respuesta </h1> 
             <p class="text-5xl font-bold ">{$averageTime}</p>
-            <p class="text-md uppercase"> s e g u n d o s </p>
+            <p class= " text-sm md:text-md uppercase"> s e g u n d o s </p>
         </div>
 
         <form action="patients" method="GET" class="cursor-pointer box-with-shadow w-full h-full">    

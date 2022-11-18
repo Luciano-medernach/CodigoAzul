@@ -4,7 +4,7 @@
 
 <h3 class="mt-4 pl-4 font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite mb-8"> Estadisticas  </h3>
 
-<div class="flex justify-center   ">
+<div class="flex flex-col md:flex-row justify-center   ">
     <label class="pl-8 bg-cdarkblue text-cwhite font-bold h-10 p-2 text-lg" for="filter">Seleccione filtro</label>
     <select class="text-cwhite text-xl border-none bg-clightgreen  h-10 p-2  " name="filter" id="data-filter">
         <option value="area" selected>Area</option>
@@ -21,8 +21,8 @@
     </select>
     </div>
 
-    <div class=""  id="chartContainer">
-        <div class="flex flex-col items-center text-cblue" id="chart" style="height: 370px; width: 50%;">
+    <div class="pb-12"  id="chartContainer">
+        <div class="flex flex-col items-center text-cblue  " id="chart" style="height: 370px; width: 50%;">
         </div>
     </div>
 
