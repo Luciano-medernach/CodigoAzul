@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkblue"
+    android:orientation="vertical"
+    tools:context=".home">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center"
+
+        android:src="@mipmap/ic_launcher_round"></de.hdodenhof.circleimageview.CircleImageView>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:gravity="center"
+        android:text="LLAMADAS"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        />
+
+    <ListView
+        android:id="@+id/emerImportanteNA"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/modlistviewuna"
+        android:inputType="textCapCharacters"
+        android:padding="0dp" />
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="3dp"></TextView>
+
+    <ListView
+        android:id="@+id/emerComunNA"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/modlistviewcna"
+        android:inputType="textCapCharacters"
+
+        android:padding="0dp" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="3dp"></TextView>
+
+    <ListView
+        android:id="@+id/emerImportanteA"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/modlistviewua"
+        android:inputType="textCapCharacters"
+        android:padding="0dp" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="3dp"></TextView>
+
+    <ListView
+        android:id="@+id/emerComunA"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/modlistviewca"
+        android:inputType="textCapCharacters"
+        android:padding="0dp" />
+
+</LinearLayout>
