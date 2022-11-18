@@ -43,7 +43,11 @@
   }
 
   .inputs-form {
-    @apply bg-transparent w-2/3 h-10  border-none appearance-none  focus:bg-transparent focus:text-xl focus:font-semibold focus:outline-none;
+    @apply bg-transparent w-2/3 h-10  border-none appearance-none  focus:bg-transparent focus:text-xl   font-semibold focus:outline-none;
+  }
+
+  .inputs-search {
+    @apply bg-transparent w-2/3 h-10 text-cwhite  border-none appearance-none  focus:bg-transparent focus:text-xl  font-semibold focus:outline-none;
   }
 
   .select-form {
