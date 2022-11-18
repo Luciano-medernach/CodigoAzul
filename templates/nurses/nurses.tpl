@@ -2,15 +2,19 @@
 
 <body class="bg-gradient-to-b from-cwhite to-clightblue min-h-screen text-cdarkblue pb-20">
         
-    <div class="bg-cdarkblue inline-flex w-full pl-40 mt-2 ">
+    <form action="nurses" method="GET" class="bg-cdarkblue inline-flex w-full pl-40 mt-2 ">
         <h2 class="bg-cblue w-48 text-md text-cwhite text-lg font-bold uppercase pl-2 pr-8 py-1 mr-8"> B u s c a d o r </h2>
-        <input class=" mr-8 pr-4 inputs-form w-60" type="text" id="name-search" placeholder="Nombre" maxlength="50">
-        <input class=" inputs-form w-60"  type="text" id="lastname-search" placeholder="Apellido" maxlength="50">
+        <input class=" mr-8 pr-4 inputs-form w-60" type="text" id="name-search" name="name" value="{$name}" placeholder="Nombre" maxlength="50">
+        <select name="page">
+                {for $i = 0 to $count}
+                    <option value={$i}>{$i}</option>
+                {/for}
+            </select>  
         <button class="cursor-pointer h-10 bg-cblue px-2">
             <img class=" w-6  h-6 " src="./images/buscar.png" alt="Logo Codigo Azul">
         </button>
                 
-    </div>
+    </form>
 
     {if $admin}
         <a class="mt-4 block mx-auto p-2 w-1/3 text-xl text-cwhite  bg-cpink btn-white " href="nurse-add">Agregar Personal</a>

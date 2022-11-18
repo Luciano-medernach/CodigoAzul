@@ -21,8 +21,18 @@ class NursesController{
     public function showList(){
         AuthHelper::checkLoggedIn();
 
-        $nurses = $this->nursesModel->getAll();
-        $this->nursesView->showList($nurses);
+        $page = $_GET["page"];
+        $name = $_GET["name"];
+        
+        if($name != ""){
+            $count = $this->nursesModel->getCountByName($name);
+            $nurses = $this->nursesModel->getByName($name, $page);
+        } else {
+            $count = $this->nursesModel->getCount();
+            $nurses = $this->nursesModel->getAllByPage($page);
+        }
+        
+        $this->nursesView->showList($nurses, floor($count->count/50), $name);
     }
 
     // Muestra un enfermero

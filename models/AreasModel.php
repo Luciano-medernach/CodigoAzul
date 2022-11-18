@@ -5,15 +5,15 @@ require_once('Model.php');
 class AreasModel extends Model {
 
     // Retorna todas las areas
-    function getAll($page){
+    function getAllByPage($page){
         $page = $page * 50;
-        $query = $this-> getDb()->prepare('SELECT * FROM areas WHERE id LIMIT '.$page.' , 50');
+        $query = $this-> getDb()->prepare('SELECT * FROM areas LIMIT '.$page.' , 50');
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
     // Retorna todas las areas
-    function getAllAbsolute(){
+    function getAll(){
         $query = $this-> getDb()->prepare('SELECT * FROM areas WHERE id');
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);

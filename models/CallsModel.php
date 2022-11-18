@@ -4,8 +4,8 @@ require_once('Model.php');
 
 class CallsModel extends Model {
 
-    // Retorna todas las llamadas
-    function getAll($page){
+    // Retorna todas las llamadas indexado
+    function getAllByPage($page = 0){
         $page = $page * 50;
         $query = $this-> getDb()->prepare('SELECT * FROM calls LEFT JOIN areas ON areas.id = calls.area LIMIT '.$page.', 50');
         $query->execute();
@@ -13,7 +13,7 @@ class CallsModel extends Model {
     }
 
     // Retorna todas las llamadas
-    function getAllAbsolute(){
+    function getAll(){
         $query = $this-> getDb()->prepare('SELECT * FROM calls LEFT JOIN areas ON areas.id = calls.area');
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
@@ -43,7 +43,7 @@ class CallsModel extends Model {
 
     // Retorna las llamadas por tipo
     function getByType($type){
-        $query = $this-> getDb()->prepare('SELECT * FROM calls WHERE type = ? ORDER BY date DESC LIMIT 5;');
+        $query = $this-> getDb()->prepare('SELECT * FROM calls WHERE type = ? ORDER BY date DESC LIMIT 3;');
         $query->execute([$type]);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }

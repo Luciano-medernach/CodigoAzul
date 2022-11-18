@@ -7,13 +7,6 @@
             <button>
                 <img class=" w-16 mx-auto" src="./images/latido-del-corazon.png" alt="Logo Codigo Azul">
                 <h2>Llamadas</h2>
-                {if $calls}
-                    {foreach from=$calls item=call}
-                        <p>Urgencia en: {$call->area}</p>
-                        <p>Fecha: {$call->date}</p>
-                    {/foreach}
-            
-                {/if}
                 <input type="hidden" name="area" value="">
                 <input type="hidden" name="page" value="0">
             </button>
@@ -24,29 +17,23 @@
             <p class="text-md uppercase"> s e g u n d o s </p>
         </div>
 
-        <div onclick="window.location='patients';" class="cursor-pointer box-with-shadow w-full h-full">    
-            <img class=" w-24 mx-auto" src="./images/reporte-de-salud.png" alt="Logo Codigo Azul">
-            <h2>Pacientes</h2>
-            {* {if $patients}
-                {foreach from=$patients item=patient}
-                    <p>{$patient->lastname}, {$patient->name}</p>
-                {/foreach}
-            {else}
-                <p>Aun no hay ningun paciente.</p>
-            {/if} *}
-        </div>
+        <form action="patients" method="GET" class="cursor-pointer box-with-shadow w-full h-full">    
+            <button>
+                <img class=" w-24 mx-auto" src="./images/reporte-de-salud.png" alt="Logo Codigo Azul">
+                <h2>Pacientes</h2>
+                <input type="hidden" name="name" value="">
+                <input type="hidden" name="page" value="0">
+            </button>
+        </form>
 
-        <div onclick="window.location='nurses';" class="cursor-pointer box-with-shadow w-full h-full">
-            <img class=" w-24 mx-auto" src="./images/medico.png" alt="Logo Codigo Azul">
-            <h2>Personal medico</h2>
-            {* {if $nurses}
-                {foreach from=$nurses item=nurse}
-                    <p>{$nurse->name} {$nurse->lastname}</p>
-                {/foreach}
-            {else}
-                <p>Aun no tenemos personal.</p>
-            {/if} *}
-        </div>
+        <form action="nurses" method="GET" class="cursor-pointer box-with-shadow w-full h-full">
+            <button>
+                <img class=" w-24 mx-auto" src="./images/medico.png" alt="Logo Codigo Azul">
+                <h2>Personal medico</h2>
+                <input type="hidden" name="name" value="">
+                <input type="hidden" name="page" value="0">
+            </button>
+        </form>
 
         <form action="areas" method="GET" class="cursor-pointer box-with-shadow w-full h-full">
             <button>
@@ -61,27 +48,17 @@
         <div onclick="window.location='reports';" class="cursor-pointer box-with-shadow w-full h-full">
             <img class=" w-24 mx-auto" src="./images/estadistica-inferencial.png" alt="Logo Codigo Azul">
             <h2>Reportes</h2> 
-            {* {if $areas}
-                {foreach from=$areas item=area}
-                    <p>{$area->name}</p>
-                {/foreach}
-            {else}
-                <p>Aun no hay reportes.</p>
-            {/if} *}
         </div>
         
         {if $admin}
-            <div onclick="window.location='users';" class=" cursor-pointer box-with-shadow w-full h-full">
-                <img class=" w-24 mx-auto" src="./images/usuario.png" alt="Logo Codigo Azul">
-                <h2>Usuarios</h2>
-                {* {if $users}
-                    {foreach from=$users item=user}
-                        <p>{$user->name} {$user->lastname}</p>
-                    {/foreach}
-                {else}
-                    <p>Aun no hay ningun usuario.</p>
-                {/if} *}
-            </div>
+            <form action="users" method="GET" class=" cursor-pointer box-with-shadow w-full h-full">
+                <button>
+                    <img class=" w-24 mx-auto" src="./images/usuario.png" alt="Logo Codigo Azul">
+                    <h2>Usuarios</h2>
+                    <input type="hidden" name="page" value="0"/>
+                    <input type="hidden" name="name" value=""/>
+                </button>
+            </form>
         {/if}
     </div>
 

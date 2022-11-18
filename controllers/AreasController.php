@@ -28,7 +28,7 @@ class AreasController{
             $areas = $this->areasModel->getByName($name, $page);
         } else {
             $count = $this->areasModel->getCount();
-            $areas = $this->areasModel->getAll($page);
+            $areas = $this->areasModel->getAllByPage($page);
         }
         
         $this->areasView->showList($areas, floor($count->count/50), $name);
@@ -40,9 +40,9 @@ class AreasController{
 
         $id = $_GET["id"];
         $area = $this->areasModel->getById($id);
-        $patients = $this->patientsModel->getAll($id);
+        $patients = $this->patientsModel->getAll();
         $assignedPatients = $this->patientsModel->getAssignedToArea($id);
-        $nurses = $this->nursesModel->getAll($id);
+        $nurses = $this->nursesModel->getAll();
         $assignedNurses = $this->nursesModel->getAssignedToArea($id);
         $assignedOrigins = $this->areasModel->getOriginsAssigned($id);
         $this->areasView->show($area, $patients, $assignedPatients, $nurses, $assignedNurses, $assignedOrigins);

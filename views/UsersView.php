@@ -15,8 +15,10 @@
         }
 
         // Muestra el listado de usuarios
-        function showList($users){
+        function showList($users, $count, $name){
             $this->getSmarty()->assign('users', $users);
+            $this->getSmarty()->assign('count', $count);
+            $this->getSmarty()->assign('name', $name);
             $this->getSmarty()->display('templates/users/users.tpl');
         }
 

@@ -15,8 +15,10 @@
         }
 
         // Muestra el listado de pacientes
-        function showList($patients){
+        function showList($patients, $count, $name){
             $this->getSmarty()->assign('patients', $patients);
+            $this->getSmarty()->assign('count', $count);
+            $this->getSmarty()->assign('name', $name);
             $this->getSmarty()->display('templates/patients/patients.tpl');
         }
 

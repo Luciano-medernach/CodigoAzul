@@ -18,8 +18,19 @@ class UsersController{
     public function showList(){
         AuthHelper::checkLoggedIn();
 
-        $users = $this->usersModel->getAll();
-        $this->usersView->showList($users);
+        $page = $_GET["page"];
+        $name = $_GET["name"];
+        
+        if($name != ""){
+            $count = $this->usersModel->getCountByName($name);
+            $users = $this->usersModel->getByName($name, $page);
+        } else {
+            $count = $this->usersModel->getCount();
+            $users = $this->usersModel->getAllByPage($page);
+        }
+        
+        $this->usersView->showList($users, floor($count->count/50), $name);
+
     }
 
     // Muestra el formulario de ingreso

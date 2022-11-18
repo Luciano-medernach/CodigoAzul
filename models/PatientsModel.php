@@ -10,10 +10,39 @@ class PatientsModel extends Model {
     }
 
 
+    // Retorna todos los pacientes indexado
+    function getAllByPage($page){
+        $page = $page * 50;
+        $query = $this-> getDb()->prepare('SELECT * FROM patients LIMIT '.$page.' , 50');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
     // Retorna todos los pacientes
     function getAll(){
-        $query = $this-> getDb()->prepare('SELECT * FROM patients ORDER BY lastname ASC');
+        $query = $this-> getDb()->prepare('SELECT * FROM patients');
         $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // Retorna la cantidad de pacientes
+    function getCount(){
+        $query = $this-> getDb()->prepare('SELECT Count(id) as count FROM patients');
+        $query->execute();
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    // Retorna la cantidad de pacientes por nombre
+    function getCountByName($name){
+        $query = $this-> getDb()->prepare('SELECT Count(id) as count FROM patients WHERE name LIKE ? OR lastname LIKE ?');
+        $query->execute([$name."%", $name."%"]);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    // Retorna pacientes por nombre
+    function getByName($name, $page){
+        $query = $this-> getDb()->prepare('SELECT * FROM patients WHERE name LIKE ? OR lastname LIKE ? LIMIT '.$page.', 50');
+        $query->execute([$name."%", $name."%"]);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 

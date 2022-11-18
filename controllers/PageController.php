@@ -23,13 +23,9 @@ class PageController{
     // Muestra el inicio
     public function showHome(){
         AuthHelper::checkLoggedIn();
-        $calls = $this->callsModel->getByType("urgents");
         $averageTime = $this->callsModel->getAverageTime();
-        $patients = $this->patientsModel->getLast();
-        $nurses = $this->nursesModel->getLast();
-        $areas = $this->areasModel->getLast();
-        $users = $this->usersModel->getLast();
-        $this->pageView->showHome($calls, $averageTime, $patients, $nurses, $areas, $users);
+
+        $this->pageView->showHome($averageTime);
     }
 
     // Pantalla de error
@@ -41,8 +37,8 @@ class PageController{
     public function showReports(){
         AuthHelper::checkLoggedIn();
 
-        $calls = $this->callsModel->getAllAbsolute();
-        $areas = $this->areasModel->getAllAbsolute();
+        $calls = $this->callsModel->getAll();
+        $areas = $this->areasModel->getAll();
 
         $this->pageView->showReports();
     }

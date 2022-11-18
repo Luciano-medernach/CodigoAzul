@@ -15,13 +15,9 @@
         }
 
         // Muestra el inicio de la pagina
-        function showHome($calls, $averageTime, $patients, $nurses, $areas, $users){
-            $this->getSmarty()->assign('calls', $calls);
+        function showHome($averageTime){
             $this->getSmarty()->assign('averageTime', $averageTime);
-            $this->getSmarty()->assign('patients', $patients);
-            $this->getSmarty()->assign('nurses', $nurses);
-            $this->getSmarty()->assign('areas', $areas);
-            $this->getSmarty()->assign('users', $users);
+
             $this->getSmarty()->display('templates/home.tpl');
         }
 

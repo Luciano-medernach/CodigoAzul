@@ -4,10 +4,38 @@ require_once('Model.php');
 
 class NursesModel extends Model {
 
-    // Retorna todos los enfermeros
-    function getAll(){
-        $query = $this-> getDb()->prepare('SELECT * FROM nurses ORDER BY lastname ASC');
+   // Retorna todos los enfermeros indexado
+   function getAllByPage($page){
+    $page = $page * 50;
+    $query = $this-> getDb()->prepare('SELECT * FROM nurses LIMIT '.$page.' , 50');
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_OBJ);
+}
+
+function getAll(){
+    $query = $this-> getDb()->prepare('SELECT * FROM nurses');
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_OBJ);
+}
+
+    // Retorna la cantidad de enfermeros
+    function getCount(){
+        $query = $this-> getDb()->prepare('SELECT Count(id) as count FROM nurses');
         $query->execute();
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    // Retorna la cantidad de enfermeros por nombre
+    function getCountByName($name){
+        $query = $this-> getDb()->prepare('SELECT Count(id) as count FROM nurses WHERE name LIKE ? OR lastname LIKE ?');
+        $query->execute([$name."%", $name."%"]);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    // Retorna enfermeros por nombre
+    function getByName($name, $page){
+        $query = $this-> getDb()->prepare('SELECT * FROM nurses WHERE name LIKE ? OR lastname LIKE ? LIMIT '.$page.', 50');
+        $query->execute([$name."%", $name."%"]);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 

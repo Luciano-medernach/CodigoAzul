@@ -15,8 +15,10 @@
         }
 
         // Muestra el listado de enfermeros
-        function showList($nurses){
+        function showList($nurses, $count, $name){
             $this->getSmarty()->assign('nurses', $nurses);
+            $this->getSmarty()->assign('count', $count);
+            $this->getSmarty()->assign('name', $name);
             $this->getSmarty()->display('templates/nurses/nurses.tpl');
         }
 

@@ -38,7 +38,7 @@ class CallsController{
         if($area != ""){
             $calls = $this->callsModel->getByArea($page, $area);
         } else {
-            $calls = $this->callsModel->getAll($page);
+            $calls = $this->callsModel->getAllByPage($page);
         }
         
         echo json_encode($calls);
