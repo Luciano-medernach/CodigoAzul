@@ -41,8 +41,8 @@ class PageController{
     public function showReports(){
         AuthHelper::checkLoggedIn();
 
-        $calls = $this->callsModel->getAll();
-        $areas = $this->areasModel->getAll();
+        $calls = $this->callsModel->getAllAbsolute();
+        $areas = $this->areasModel->getAllAbsolute();
 
         $this->pageView->showReports();
     }

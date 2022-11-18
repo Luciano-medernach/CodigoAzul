@@ -17,14 +17,30 @@ class CallsController{
     public function showList(){
         AuthHelper::checkLoggedIn();
 
-        $this->callsView->showList();
+        $area = $_GET["area"];
+
+        if($area != ""){
+            $count = $this->callsModel->getCountArea($area);
+        } else {
+            $count = $this->callsModel->getCount();
+        }
+
+        $this->callsView->showList(floor($count->count/50), $area);
     }
 
     // Imprime todas las llamadas
     public function getAll(){
         AuthHelper::checkLoggedIn();
 
-        $calls = $this->callsModel->getAll();
+        $page = $_GET["page"];
+        $area = $_GET["area"];
+        
+        if($area != ""){
+            $calls = $this->callsModel->getByArea($page, $area);
+        } else {
+            $calls = $this->callsModel->getAll($page);
+        }
+        
         echo json_encode($calls);
     }
 

@@ -3,6 +3,9 @@ const containerUA = document.getElementById("container-UA");
 const containerNNA = document.getElementById("container-NNA");
 const containerNA = document.getElementById("container-NA");
 
+const areaInput = document.getElementById("area-input");
+const page = document.getElementById("page-select");
+
 updateCalls();
 
 setInterval(updateCalls, 5000);
@@ -11,7 +14,11 @@ function updateCalls() {
   // Crea la solicitud de AJAX
   let ajax_request = new XMLHttpRequest();
 
-  let ajax_url = "/codigoazul/ajax-get-calls";
+  let ajax_url =
+    "/codigoazul/ajax-get-calls?area=" +
+    areaInput.value +
+    "&page=" +
+    page.value;
 
   ajax_request.onreadystatechange = function () {
     // Verifica que el estado sea correcto
@@ -69,18 +76,22 @@ function updateCalls() {
           if (!notUpload) {
             if (element.type == "urgente") {
               if (element.attended) {
-                call.className = "js-generated font-semibold box-with-shadow bg-cpink/50 my-2 w-full italic";
+                call.className =
+                  "js-generated font-semibold box-with-shadow bg-cpink/50 my-2 w-full italic";
                 containerUA.insertBefore(call, containerUA.firstChild);
               } else {
-                call.className = "js-generated text-cwhite font-bold text-lg box-with-shadow my-2 w-full bg-cpink";
+                call.className =
+                  "js-generated text-cwhite font-bold text-lg box-with-shadow my-2 w-full bg-cpink";
                 containerUNA.insertBefore(call, containerUNA.firstChild);
               }
             } else {
               if (element.attended) {
-                call.className = "js-generated font-semibold box-with-shadow x my-2 bg-cwhite/50 w-lg italic";
+                call.className =
+                  "js-generated font-semibold box-with-shadow x my-2 bg-cwhite/50 w-lg italic";
                 containerNA.insertBefore(call, containerNA.firstChild);
               } else {
-                call.className = "js-generated text-cwhite font-bold text-lg box-with-shadow bg-clightgreen my-2 mr-2 w-lg";
+                call.className =
+                  "js-generated text-cwhite font-bold text-lg box-with-shadow bg-clightgreen my-2 mr-2 w-lg";
                 containerNNA.insertBefore(call, containerNNA.firstChild);
               }
             }

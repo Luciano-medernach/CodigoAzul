@@ -15,7 +15,10 @@
         }
 
         // Muestra el listado de llamadas
-        function showList(){
+        function showList($count, $area){
+            $this->getSmarty()->assign('count', $count);
+            $this->getSmarty()->assign('area', $area);
+
             $this->getSmarty()->display('templates/calls/calls.tpl');
         }
 

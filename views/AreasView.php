@@ -15,8 +15,10 @@
         }
 
         // Muestra el listado de areas
-        function showList($areas){
+        function showList($areas, $count, $name){
             $this->getSmarty()->assign('areas', $areas);
+            $this->getSmarty()->assign('count', $count);
+            $this->getSmarty()->assign('name', $name);
             $this->getSmarty()->display('templates/areas/areas.tpl');
         }
 

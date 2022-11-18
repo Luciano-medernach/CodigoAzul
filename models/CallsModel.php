@@ -5,9 +5,39 @@ require_once('Model.php');
 class CallsModel extends Model {
 
     // Retorna todas las llamadas
-    function getAll(){
+    function getAll($page){
+        $page = $page * 50;
+        $query = $this-> getDb()->prepare('SELECT * FROM calls LEFT JOIN areas ON areas.id = calls.area LIMIT '.$page.', 50');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // Retorna todas las llamadas
+    function getAllAbsolute(){
         $query = $this-> getDb()->prepare('SELECT * FROM calls LEFT JOIN areas ON areas.id = calls.area');
         $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // Retorna el conteo de llamadas
+    function getCount(){
+        $query = $this-> getDb()->prepare('SELECT Count(calls.id) as count FROM calls LEFT JOIN areas ON areas.id = calls.area');
+        $query->execute();
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    // Retorna el conteo de llamadas del area
+    function getCountArea($area){
+        $query = $this-> getDb()->prepare('SELECT Count(calls.id) as count FROM calls WHERE area LIKE ? ');
+        $query->execute([$area."%"]);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    // Retorna llamadas por area
+    function getByArea($page, $area){
+        $page = $page * 50;
+        $query = $this-> getDb()->prepare('SELECT * FROM calls LEFT JOIN areas ON areas.id = calls.area WHERE areas.name LIKE ? LIMIT '.$page.', 50');
+        $query->execute([$area."%"]);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 

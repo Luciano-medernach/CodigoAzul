@@ -20,8 +20,18 @@ class AreasController{
     // Muestra el listado de areas
     public function showList(){
         AuthHelper::checkLoggedIn();
-        $areas = $this->areasModel->getAll();
-        $this->areasView->showList($areas);
+        $page = $_GET["page"];
+        $name = $_GET["name"];
+        
+        if($name != ""){
+            $count = $this->areasModel->getCountByName($name);
+            $areas = $this->areasModel->getByName($name, $page);
+        } else {
+            $count = $this->areasModel->getCount();
+            $areas = $this->areasModel->getAll($page);
+        }
+        
+        $this->areasView->showList($areas, floor($count->count/50), $name);
     }
 
     // Muestra el area

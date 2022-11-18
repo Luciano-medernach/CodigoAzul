@@ -3,17 +3,21 @@
 <body class=" bg-gradient-to-b from-cwhite to-clightblue min-h-screen ">
     <div class="w-1/2 grid gap-8 grid-cols-3 mt-10 max-w-3xl mx-auto pb-20">
 
-        <div onclick="window.location='calls';" class="cursor-pointer col-start-1 col-end-3 bg-cpink/25 box-with-shadow w-full h-full ">
-            <img class=" w-16 mx-auto" src="./images/latido-del-corazon.png" alt="Logo Codigo Azul">
-            <h2>Llamadas</h2>
-            {if $calls}
-                {foreach from=$calls item=call}
-                    <p>Urgencia en: {$call->area}</p>
-                    <p>Fecha: {$call->date}</p>
-                {/foreach}
-           
-            {/if}
-        </div>
+        <form action="calls" method="GET" class="cursor-pointer col-start-1 col-end-3 bg-cpink/25 box-with-shadow w-full h-full ">
+            <button>
+                <img class=" w-16 mx-auto" src="./images/latido-del-corazon.png" alt="Logo Codigo Azul">
+                <h2>Llamadas</h2>
+                {if $calls}
+                    {foreach from=$calls item=call}
+                        <p>Urgencia en: {$call->area}</p>
+                        <p>Fecha: {$call->date}</p>
+                    {/foreach}
+            
+                {/if}
+                <input type="hidden" name="area" value="">
+                <input type="hidden" name="page" value="0">
+            </button>
+        </form>
         <div class=" text-cdarkblue/80 box-with-shadow bg-clightblue w-full h-full uppercase flex flex-col justify-center">
             <h1 class="text-md">Tiempo estimado de respuesta </h1> 
             <p class="text-5xl font-bold ">{$averageTime}</p>
@@ -44,17 +48,15 @@
             {/if} *}
         </div>
 
-        <div onclick="window.location='areas';" class="cursor-pointer box-with-shadow w-full h-full">
-            <img class=" w-24 mx-auto" src="./images/latido-del-corazon.png" alt="Logo Codigo Azul">
-            <h2>Areas</h2>
-            {* {if $areas}
-                {foreach from=$areas item=area}
-                    <p>{$area->name}</p>
-                {/foreach}
-            {else}
-                <p>Aun no hay ningun area.</p>
-            {/if} *}
-        </div>
+        <form action="areas" method="GET" class="cursor-pointer box-with-shadow w-full h-full">
+            <button>
+                <img class=" w-24 mx-auto" src="./images/latido-del-corazon.png" alt="Logo Codigo Azul">
+
+                <input type="hidden" name="page" value="0"/>
+                <input type="hidden" name="name" value=""/>
+                <h2>Areas</h2>
+            </button>
+        </form>
 
         <div onclick="window.location='reports';" class="cursor-pointer box-with-shadow w-full h-full">
             <img class=" w-24 mx-auto" src="./images/estadistica-inferencial.png" alt="Logo Codigo Azul">

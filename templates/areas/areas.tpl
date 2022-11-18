@@ -4,14 +4,18 @@
 <h3 class="pl-4 font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite"> Areas  </h3>
 
     {if $areas}
-        <div class="bg-cdarkblue inline-flex w-full pl-40 mt-2 ">
+        <form class="bg-cdarkblue inline-flex w-full pl-40 mt-2 " action="areas" method="GET">
             <h2 class="bg-cblue w-48 text-md text-cwhite text-lg font-bold uppercase pl-2 pr-8 py-1 mr-8"> B u s c a d o r </h2>
-            <input class="mr-8 pr-4 inputs-form w-60 " type="text" id="name-search" placeholder="Nombre" maxlength="50">
+            <input class="mr-8 pr-4 inputs-form w-60 " type="text" name="name" placeholder="Nombre" value="{$name}" maxlength="50">
             <button class="cursor-pointer h-10 bg-cblue px-2">
                 <img class=" w-6  h-6 " src="./images/buscar.png" alt="Logo Codigo Azul">
             </button>
-                
-        </div >
+            <select name="page">
+                {for $i = 0 to $count}
+                    <option value={$i}>{$i}</option>
+                {/for}
+            </select>  
+        </form >
     {/if}   
 
     {if $admin}
