@@ -21,8 +21,19 @@ class PatientsController{
     public function showList(){
         AuthHelper::checkLoggedIn();
 
-        $patients = $this->patientsModel->getAll();
-        $this->patientsView->showList($patients);
+        $page = $_GET["page"];
+        $name = $_GET["name"];
+        
+        if($name != ""){
+            $count = $this->patientsModel->getCountByName($name);
+            $patients = $this->patientsModel->getByName($name, $page);
+        } else {
+            $count = $this->patientsModel->getCount();
+            $patients = $this->patientsModel->getAllByPage($page);
+        }
+        
+        $this->patientsView->showList($patients, floor($count->count/50), $name);
+
     }
 
     // Muestra el paciente
