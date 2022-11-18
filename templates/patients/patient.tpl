@@ -2,36 +2,39 @@
 <body class=" text-cdarkblue min-h-screen">
 <h3 class="pl-4 font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite ">{$patient->lastname}, {$patient->name} </h3>
 <div class="bg-gradient-to-b from-cblue pb-20">
-    <div class=" py-4 px-4  grid  grid-cols-2  grid-rows-2 gap-4 items-center justify-content-center pb-20">
+    <div class=" py-4 px-4  grid  sm:grid-cols-2  grid-rows-2 gap-4 items-center justify-content-center pb-20">
 
-        <div class=" grid w-full  row-start-1 row-end-3 justify-center">
+        <div class=" grid w-full  sm:row-start-1 sm:row-end-3 justify-center">
+
+
             {if $patient->dni}
                 <p class="pl-2 font-semibold text-cwhite uppercase">DNI</p>
                 <p class="pl-8 text-cblue bg-clightblue w-60">{$patient->dni}</p>
             {/if}
             {if $patient->age}
                 <p class="pl-2 font-semibold text-cwhite uppercase">Edad</p>
-                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</Edad:>
+                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</p>
             {/if}
             {if $patient->address}
                 <p class="pl-2 font-semibold text-cwhite uppercase">Direccion</p>
-                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</Edad:>
+                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->address}</>   
+        
             {/if}
             {if $patient->phone}
                 <p class="pl-2 font-semibold text-cwhite uppercase">Telefono</p>
-                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</Edad:>
+                <p class="pl-8 text-cblue bg-clightblue w-60">  {$patient->phone}</>
             {/if}
             {if $patient->family_phone}
                 <p class="pl-2 font-semibold text-cwhite uppercase">Telefono de un familiar</p>
-                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</Edad:>
+                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->family_phone}</>
             {/if}
             {if $patient->weight}
                 <p class="pl-2 font-semibold text-cwhite uppercase">Peso</p>
-                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</Edad:>
+                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->weight}</>
             {/if}
             {if $patient->height}
-                <p class="pl-2 font-semibold text-cwhite uppercase">Altura</p>
-                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->age}</Edad:>
+                <p class="pl-2 font-semibold text-cwhite uppercase">Peso</p>
+                <p class="pl-8 text-cblue bg-clightblue w-60"> {$patient->weight}</>
             {/if}
             
             
@@ -43,7 +46,7 @@
 
             
         </div>
-        <div class="grid w-80 box-with-shadow mx-auto">
+        <div class="grid w-60 sm:w-80 box-with-shadow mx-auto">
         
         <p>Area asignada: {$patient->area}</p>    
         {if $admin}
@@ -73,7 +76,7 @@
             </form>
         </div>
         
-            <div class="mx-auto grid w-80 text-cwhite ">
+            <div class="mx-auto grid w-60 sm:w-80 text-cwhite ">
             <h3 class="text-center pl-2 font-semibold uppercase text-2xl text-cwhite">Enfermeros asignados</h3>
             {if $assignedNurses}
                 <div class="mt-4 bg-clightgreen box-with-shadow text-cwhite">
