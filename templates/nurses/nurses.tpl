@@ -3,17 +3,19 @@
 <body class="bg-gradient-to-b from-cwhite to-clightblue min-h-screen text-cdarkblue pb-20">
         
     <form action="nurses" method="GET" class="bg-cdarkblue inline-flex w-full pl-40 mt-2 ">
-        <h2 class="bg-cblue w-48 text-md text-cwhite text-lg font-bold uppercase pl-2 pr-8 py-1 mr-8"> B u s c a d o r </h2>
-        <input class=" mr-8 pr-4 inputs-form w-60" type="text" id="name-search" name="name" value="{$name}" placeholder="Nombre" maxlength="50">
-        <select name="page">
-                {for $i = 0 to $count}
-                    <option value={$i}>{$i}</option>
-                {/for}
-            </select>  
-        <button class="cursor-pointer h-10 bg-cblue px-2">
-            <img class=" w-6  h-6 " src="./images/buscar.png" alt="Logo Codigo Azul">
-        </button>
-                
+    <h2 class="bg-cblue w-48 text-md text-cwhite text-lg font-bold uppercase pl-2 pr-8 py-1 mr-8"> B u s c a d o r </h2>
+    <input class=" mr-8 pr-4 inputs-search w-60" type="text" id="name-search" name="name" value="{$name}" placeholder="Nombre" maxlength="50">
+        
+    <button class="cursor-pointer h-10 bg-cblue px-2">
+        <img class=" w-6  h-6 " src="./images/buscar.png" alt="Logo Codigo Azul">
+    </button>
+    <label class="text-cdarkblue py-2 px-4 bg-cwhite" for="page"> Pagina</label>
+    <select class="bg-cwhite text-lg font-semibold " name="page">
+            {for $i = 0 to $count}
+                <option value={$i}>{$i}</option>
+            {/for}
+        </select>     
+        
     </form>
 
     {if $admin}
