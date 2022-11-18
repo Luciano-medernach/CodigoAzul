@@ -4,26 +4,30 @@
 <h3 class="font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite"> Usuarios  </h3>
     
     
-        <form action="users" method="get" class="bg-cdarkblue inline-flex w-full pl-40 mt-2 ">
-            <h2 class="bg-cblue w-48 text-md text-cwhite text-lg font-bold uppercase pl-2 pr-8 py-1 mr-8"> B u s c a d o r </h2>
-            <input class="mr-8 pr-4 inputs-search w-60 " type="text" name="name" placeholder="Nombre o apellido" value="{$name}" maxlength="50">
-            
-            <button class="cursor-pointer h-10 bg-cblue px-2">
-                <img class=" w-6  h-6 " src="./images/buscar.png" alt="Logo Codigo Azul">
-            </button>
+        <form action="users" method="get" class="bg-cdarkblue flex flex-col md:flex-row items-baseline w-full lg:pl-40 mt-2 ">
+            <div class="flex">
+                <h2 class="bg-cblue w-28  text-cwhite text-md lg:text-lg font-semibold uppercase px-2 lg:pr-8 py-2 mr-2 lg:mr-8"> Buscador </h2>
+                <input class="mr-4 pr-4 inputs-search w-40 lg:w-60 " type="text" name="name" placeholder="Nombre o apellido" value="{$name}" maxlength="50">
+                
+                <button class="cursor-pointer h-10 bg-cblue  px-2">
+                    <img class=" w-4 lg:w-6  h-4  lg:h-6 " src="./images/buscar.png" alt="Logo Codigo Azul">
+                </button>
+            </div>
+            <div class="flex">
             <label class="text-cdarkblue py-2 px-4 bg-cwhite" for="page"> Pagina</label>
             <select class="bg-cwhite w-12 text-center" name="page">
                 {for $i = 0 to $count}
                     <option value={$i}>{$i}</option>
                 {/for}
             </select>  
+            </div>
             
         </form >
 
         {if $users}
-        <div class="max-w-2xl grid gap-6 grid-cols-2   justify-items-center  mx-auto mt-12 pb-12">
+        <div class="grid gap-6 md:grid-cols-2  justify-items-center  mx-auto mt-12 pb-12">
         {foreach from=$users item=user }
-            <div class=" flex flex-col box-with-shadow w-80">
+            <div class=" flex flex-col box-with-shadow w-60 md:w-80">
             {if $user->admin}
                 <p class="name text-xl font-bold mb-4 text-cwhite bg-cblue " >{$user->lastname}, {$user->name}</p>
             {else}

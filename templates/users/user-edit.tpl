@@ -5,7 +5,7 @@
 <h3 class="pl-4 font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite"> Editar usuario  </h3>
     
  
-    <form class=" mx-auto items-center flex flex-col box-with-shadow w-80 mt-12" action="db-user-edit" method="POST">
+    <form class=" mx-auto items-center flex flex-col box-with-shadow w-60 md:w-80 mt-12" action="db-user-edit" method="POST">
         <label class="mt-4 bg-cpink w-full text-cdarkgray font-semibold" for="name">Nombre</label>
         <input class="inputs-form" type="text" name="lastname" placeholder="Nombre" maxlength="50" value="{$user->name}" required />
         <label class="bg-cpink w-full text-cdarkgray font-semibold" for="name">Apellido</label>

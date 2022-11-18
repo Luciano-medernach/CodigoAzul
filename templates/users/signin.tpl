@@ -15,7 +15,7 @@
     <img class=" mx-auto w-40 pt-6" src="./images/logo2white.png" alt="Logo Codigo Azul">
     <h1 class="title-impact py-12 text-center text-cwhite text-3xl">Iniciar sesion</h1>
 
-    <form class="mx-auto flex flex-col items-center  w-96" autocomplete="off" action="db-signin" method="POST">
+    <form class="mx-auto flex flex-col items-center w-56 lg:w-96" autocomplete="off" action="db-signin" method="POST">
         <div class="bg-cdarkblue/60 box-with-shadow py-12 w-full">
             <input class="text-cwhite inputs-form" type="text" name="user"  placeholder="Usuario" maxlength="50" required>
             <div class="w-2/3 h-1 mx-auto bg-gradient-to-r from-cblue  to-cdarkblue"></div>
