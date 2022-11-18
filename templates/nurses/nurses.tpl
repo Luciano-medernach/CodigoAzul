@@ -7,8 +7,8 @@
             <h2 class="bg-cblue w-28  text-cwhite text-md lg:text-lg font-semibold uppercase px-2 lg:pr-8 py-2 mr-2 lg:mr-8"> Buscador </h2>
             <input class=" mr-4 pr-4 inputs-search w-40 lg:w-60 "type="text" id="name-search" name="name" value="{$name}" placeholder="Nombre" maxlength="50">
             <button class="cursor-pointer h-10 bg-cblue px-2">
-            <img class=" w-4 lg:w-6  h-4  lg:h-6" src="./images/buscar.png" alt="Logo Codigo Azul">
-        </button>
+                <img class=" w-4 lg:w-6  h-4  lg:h-6" src="./images/buscar.png" alt="Logo Codigo Azul">
+            </button>
         </div>
         <div class="flex">
             <label class="text-cdarkblue py-2 px-4 bg-cwhite" for="page"> Pagina</label>
