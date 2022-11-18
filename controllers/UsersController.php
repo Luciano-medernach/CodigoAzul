@@ -86,8 +86,11 @@ class UsersController{
         $password = $_POST["password"];
         $admin = isset($_POST["admin"]) ? 1 : 0;
 
+        $password = md5($password);
+
         $this->usersModel->add($name, $lastname, $username, $password, $admin);
-        header("Location: " . $BASE_URL . "users");
+        header("Location: " . $BASE_URL . "users?page=0&name=");
+
     }
 
     // Edita un usuario
@@ -110,7 +113,8 @@ class UsersController{
         var_dump($admin);
 
         $this->usersModel->edit($id, $name, $lastname, $username, $password, $admin);
-        header("Location: " . $BASE_URL . "users");
+        header("Location: " . $BASE_URL . "users?page=0&name=");
+
     }
 
     // Elimina un usuario
@@ -118,7 +122,7 @@ class UsersController{
         $id = $_POST["id"];
 
         $this->usersModel->delete($id);
-        header("Location: " . $BASE_URL . "users");
+        header("Location: " . $BASE_URL . "users?page=0&name=");
     }
 
     // Desloguea un usuario

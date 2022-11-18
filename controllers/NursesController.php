@@ -73,7 +73,7 @@ class NursesController{
         $lastname = $_POST["lastname"];
 
         $this->nursesModel->add($name, $lastname);
-        header("Location: " . $BASE_URL . "home");
+        header("Location: " . $BASE_URL . "nurses?page=0&name=");
     }
 
     // Edita un enfermero
@@ -83,7 +83,7 @@ class NursesController{
         $lastname = $_POST["lastname"];
 
         $this->nursesModel->edit($id, $name, $lastname);
-        header("Location: " . $BASE_URL . "home");
+        header("Location: " . $BASE_URL . "nurses?page=0&name=");
     }
 
     // Elimina un enfermero
@@ -91,7 +91,8 @@ class NursesController{
         $id = $_POST["id"];
 
         $this->nursesModel->delete($id);
-        header("Location: " . $BASE_URL . "nurses");
+        header("Location: " . $BASE_URL . "nurses?page=0&name=");
+
     }
 
 }

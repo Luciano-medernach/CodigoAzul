@@ -6,7 +6,7 @@
         <label class=" w-full sm:mx-4 bg-clightgreen py-2 px-2 sm:px-4 mr-4 text-cdarkgray text-sm sm:text-lg font-semibold">¿No conoce los datos de este paciente?</label>
         <input class="w-4 h-4 py-2"  type="checkbox" id="unknown-check" />
     </div>
-    <form id="add-form" class="text-base box-with-shadow w-64 sm:w-80 mx-auto  p-4 mt-8 max-w-xl "  action="db-patient-add" method="POST">
+    <form id="add-form" class="text-base box-with-shadow w-full  mx-auto  p-4 mt-8 max-w-2xl "  action="db-patient-add" method="POST">
     <div class="grid grid-cols-2 gap-2 mx-4  justify-items-center  pb-2">
             <label class="text-cdarkgray font-semibold" for="name">Nombre</label>
             <label class="removable text-cdarkgray font-semibold" for="lastname">Apellido</label>

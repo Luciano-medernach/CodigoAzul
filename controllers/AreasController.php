@@ -56,7 +56,8 @@ class AreasController{
         $name = $_POST["name"];
 
         $this->areasModel->add($name);
-        header("Location: " . $BASE_URL . "areas");
+        header("Location: " . $BASE_URL . "areas?page=0&name=");
+
     }
 
     // Edita un area
@@ -65,7 +66,8 @@ class AreasController{
         $name = $_POST["name"];
 
         $this->areasModel->edit($id, $name);
-        header("Location: " . $BASE_URL . "areas");
+        header("Location: " . $BASE_URL . "areas?page=0&name=");
+
     }
 
     // Elimina un area
@@ -80,7 +82,10 @@ class AreasController{
         }
 
         $this->areasModel->delete($id);
-        header("Location: " . $BASE_URL . "areas");
+        echo '<script language="javascript">';
+        echo 'history.back()';
+        echo 'history.back()';
+        echo '</script>'; 
 
     }
 

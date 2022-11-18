@@ -96,7 +96,8 @@ class PatientsController{
 
         $this->nursesModel->assignToPatient($nurseid, $patientid);
 
-        header("Location: " . $BASE_URL . "patients");
+        header("Location: " . $BASE_URL . "patients?page=0&name=");
+
     }
 
     // Agrega un paciente desconocido
@@ -113,7 +114,8 @@ class PatientsController{
 
         $this->nursesModel->assignToPatient($nurseid, $patientid);
 
-        header("Location: " . $BASE_URL . "patients");
+        header("Location: " . $BASE_URL . "patients?page=0&name=");
+
     }
 
     // Edita un paciente
@@ -136,10 +138,9 @@ class PatientsController{
         $area = $_POST["area"];
 
         $area = $area == "none" ? $patient->area : $area;
-        $nurse = $nurse == "none" ? $patient->nurse : $nurse;
 
         $this->patientsModel->edit($id, $name, $lastname, $dni, $age, $address, $phone, $family_phone, $height, $weight, $medical_history, $medicines, $area);
-        header("Location: " . $BASE_URL . "patients");
+        header("Location: " . $BASE_URL . "patients?page=0&name=");
     }
 
     // Elimina un paciente
@@ -147,7 +148,8 @@ class PatientsController{
         $id = $_POST["id"];
 
         $this->patientsModel->delete($id);
-        header("Location: " . $BASE_URL . "patients");
+        header("Location: " . $BASE_URL . "patients?page=0&name=");
+
     }
 
     // Asigna un enfermero

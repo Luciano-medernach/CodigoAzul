@@ -33,9 +33,9 @@
     <div class="max-w-2xl  justify-items-center  mx-auto mt-12 pb-12">
         
         {if $areas}
-            <div class=" flex flex-col mx-auto w-60 sm:w-80 grid gap-6  sm:grid-cols-2 "> 
+            <div class=" flex flex-col mx-auto w-full grid gap-6-full max-w-xl  sm:grid-cols-2 "> 
             {foreach from=$areas item=area }
-                <div class="box-with-shadow" id="area-container">
+                <div class="box-with-shadow mx-2" id="area-container">
                     <p class="name font-bold text-2xl pb-2" id="area-{$area->id}">{$area->name}</p>
                     <form action="area" method="GET">
                         <input type="hidden" name="id" value="{$area->id}">

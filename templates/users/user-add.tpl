@@ -2,7 +2,7 @@
 
 <body class="bg-gradient-to-b from-cwhite to-clightblue  min-h-screen text-cdarkblue pb-20">
     <h3 class="pl-4 font-bold uppercase text-2xl bg-clightgreen/50 text-cwhite"> Crear usuario  </h3>
-    <form class="flex flex-col items-center text-lg w-60 md:w-80 mx-auto box-with-shadow p-4 mt-12"  action="db-user-add" method="POST">
+    <form class="flex flex-col items-center text-lg w-full max-w-2xl mx-auto box-with-shadow p-4 mt-12"  action="db-user-add" method="POST">
         <label class="mt-4 bg-cpink w-full text-cdarkgray font-semibold" for="name">Nombre</label>
         <input class="py-4 text-cdarkgray inputs-form"  type="text" name="name" placeholder="Nombre" maxlength="50" required />
         <label class="mt-4 bg-cpink w-full text-cdarkgray font-semibold" for="name">Apellido</label>
