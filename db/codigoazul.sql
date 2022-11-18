@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2022 a las 20:15:05
+-- Tiempo de generación: 18-11-2022 a las 10:58:37
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -146,7 +146,8 @@ CREATE TABLE `nurse_patient` (
 
 INSERT INTO `nurse_patient` (`id`, `nurseid`, `patientid`) VALUES
 (15, 3, 2),
-(16, 3, 5);
+(16, 3, 5),
+(18, 3, 7);
 
 -- --------------------------------------------------------
 
@@ -156,18 +157,18 @@ INSERT INTO `nurse_patient` (`id`, `nurseid`, `patientid`) VALUES
 
 CREATE TABLE `patients` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `dni` int(11) NOT NULL,
-  `age` int(11) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `phone` varchar(50) NOT NULL,
-  `family_phone` varchar(50) NOT NULL,
-  `height` float NOT NULL,
-  `weight` float NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `lastname` varchar(50) DEFAULT NULL,
+  `dni` int(11) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `family_phone` varchar(50) DEFAULT NULL,
+  `height` float DEFAULT NULL,
+  `weight` float DEFAULT NULL,
   `medical_history` text DEFAULT NULL,
   `medicines` text DEFAULT NULL,
-  `area` int(11) NOT NULL
+  `area` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -175,27 +176,9 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`id`, `name`, `lastname`, `dni`, `age`, `address`, `phone`, `family_phone`, `height`, `weight`, `medical_history`, `medicines`, `area`) VALUES
-(2, 'Julio', 'Martinez', 0, 46, '', '', '', 1.67, 44, '', '', 2),
-(5, 'Ivana', 'Medernach', 174437, 51, '64-156', '2262141510', '2262140631', 1.84, 70, '', '', 2);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `patient_area`
---
-
-CREATE TABLE `patient_area` (
-  `id` int(11) NOT NULL,
-  `patientid` int(11) NOT NULL,
-  `areaid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `patient_area`
---
-
-INSERT INTO `patient_area` (`id`, `patientid`, `areaid`) VALUES
-(14, 2, 2);
+(2, 'Julio', 'Martinez', 0, 46, '', '', '', 1.67, 44, '', '', NULL),
+(5, 'Ivana', 'Medernach', 174437, 51, '64-156', '2262141510', '2262140631', 1.84, 70, '', '', NULL),
+(7, 'Desconocido', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 3);
 
 -- --------------------------------------------------------
 
@@ -274,14 +257,6 @@ ALTER TABLE `patients`
   ADD KEY `area` (`area`) USING BTREE;
 
 --
--- Indices de la tabla `patient_area`
---
-ALTER TABLE `patient_area`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `patientid` (`patientid`),
-  ADD KEY `areaid` (`areaid`);
-
---
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -326,19 +301,13 @@ ALTER TABLE `nurse_area`
 -- AUTO_INCREMENT de la tabla `nurse_patient`
 --
 ALTER TABLE `nurse_patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `patient_area`
---
-ALTER TABLE `patient_area`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -381,13 +350,6 @@ ALTER TABLE `nurse_patient`
 --
 ALTER TABLE `patients`
   ADD CONSTRAINT `patients_ibfk_1` FOREIGN KEY (`area`) REFERENCES `areas` (`id`);
-
---
--- Filtros para la tabla `patient_area`
---
-ALTER TABLE `patient_area`
-  ADD CONSTRAINT `patient_area_ibfk_1` FOREIGN KEY (`patientid`) REFERENCES `patients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `patient_area_ibfk_2` FOREIGN KEY (`areaid`) REFERENCES `areas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
