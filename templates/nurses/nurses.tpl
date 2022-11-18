@@ -2,24 +2,26 @@
 
 <body class="bg-gradient-to-b from-cwhite to-clightblue min-h-screen text-cdarkblue pb-20">
         
-    <form action="nurses" method="GET" class="bg-cdarkblue inline-flex w-full pl-40 mt-2 ">
-    <h2 class="bg-cblue w-48 text-md text-cwhite text-lg font-bold uppercase pl-2 pr-8 py-1 mr-8"> B u s c a d o r </h2>
-    <input class=" mr-8 pr-4 inputs-search w-60" type="text" id="name-search" name="name" value="{$name}" placeholder="Nombre" maxlength="50">
-        
-    <button class="cursor-pointer h-10 bg-cblue px-2">
-        <img class=" w-6  h-6 " src="./images/buscar.png" alt="Logo Codigo Azul">
-    </button>
-    <label class="text-cdarkblue py-2 px-4 bg-cwhite" for="page"> Pagina</label>
-    <select class="bg-cwhite text-lg font-semibold " name="page">
-            {for $i = 0 to $count}
-                <option value={$i}>{$i}</option>
-            {/for}
-        </select>     
-        
+    <form action="nurses" method="GET" class="bg-cdarkblue  flex flex-col md:flex-row items-baseline w-full lg:pl-40 mt-2 ">
+        <div class="flex">
+            <h2 class="bg-cblue w-28  text-cwhite text-md lg:text-lg font-semibold uppercase px-2 lg:pr-8 py-2 mr-2 lg:mr-8"> Buscador </h2>
+            <input class=" mr-4 pr-4 inputs-search w-40 lg:w-60 "type="text" id="name-search" name="name" value="{$name}" placeholder="Nombre" maxlength="50">
+            <button class="cursor-pointer h-10 bg-cblue px-2">
+            <img class=" w-4 lg:w-6  h-4  lg:h-6" src="./images/buscar.png" alt="Logo Codigo Azul">
+        </button>
+        </div>
+        <div class="flex">
+            <label class="text-cdarkblue py-2 px-4 bg-cwhite" for="page"> Pagina</label>
+            <select class="bg-cwhite w-12 text-center" name="page">
+                {for $i = 0 to $count}
+                    <option value={$i}>{$i}</option>
+                {/for}
+            </select>  
+        </div>     
     </form>
 
     {if $admin}
-        <a class="mt-4 block mx-auto p-2 w-1/3 text-xl text-cwhite  bg-cpink btn-white " href="nurse-add">Agregar Personal</a>
+        <a class="mt-4 block mx-auto p-2 w-60 sm:w-80 text-xl text-cwhite  bg-cpink btn-white " href="nurse-add">Agregar Personal</a>
     {/if}
     {if $nurses}
 
@@ -27,7 +29,7 @@
 
 
        
-        <div class=" grid gap-8 grid-cols-4 justify-items-center  mx-auto mt-8 mx-20">
+        <div class=" grid gap-8 sm:grid-cols-2 lg:grid-cols-4 justify-items-center  mx-auto mt-8 mx-20">
         
         {foreach from=$nurses item=nurse }
             

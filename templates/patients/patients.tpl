@@ -3,7 +3,7 @@
 <body class="bg-gradient-to-b from-cwhite to-clightblue  min-h-screen text-cdarkblue pb-20">
 
     {if $patients}
-        <form action="users" method="get" class="bg-cdarkblue flex flex-col md:flex-row items-baseline w-full lg:pl-40 mt-2 ">
+        <form action="patients" method="get" class="bg-cdarkblue flex flex-col md:flex-row items-baseline w-full lg:pl-40 mt-2 ">
             <div class="flex">
                 <h2 class="bg-cblue w-28  text-cwhite text-md lg:text-lg font-semibold uppercase px-2 lg:pr-8 py-2 mr-2 lg:mr-8"> Buscador </h2>
                 <input class=" mr-4 pr-4 inputs-search w-40 lg:w-60 " type="text" name="name" placeholder="Nombre o apellido" maxlength="50">
